@@ -82,7 +82,7 @@ body{
 	position:relative;
 }
 .menu li:not(:last-child)::after{
-	background: url("icon/icon-arrow.svg") no-repeat center center;
+	background: url("../assets/icon/icon-arrow.svg") no-repeat center center;
 	width:12px;
 	height:12px;
 	content:"";
@@ -114,7 +114,7 @@ body{
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
-	background:url("icon/arrow-down.svg") no-repeat 270px center;
+	background:url("../assets/icon/arrow-down.svg") no-repeat 270px center;
 	background-size: 12px;
 }
 .select:hover{
@@ -123,7 +123,7 @@ body{
 .select:active{
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.09);
  	border-color: #55acee;
-	background-image:url("icon/arrow-up.svg");
+	background-image:url("../assets/icon/arrow-up.svg");
 }
 .select option{
 	border-right:solid 1px #55acee;
@@ -246,19 +246,19 @@ body{
 	position:absolute;
 	right:25px;
 	top:17px;
-	background:url("icon/icon-basket-copy-3.svg") no-repeat center center;
+	background:url("../assets/icon/icon-basket-copy-3.svg") no-repeat center center;
 }
 .button_icon:hover{
 	color:var(--color-secondary);
 }
 .button_icon:hover::before{
-	background:url("icon/icon-basket-copy-4.svg") no-repeat center center;
+	background:url("../assets/icon/icon-basket-copy-4.svg") no-repeat center center;
 }
 .button_icon:active{
 	color:var(--color-white);
 }
 .button_icon:active::before{
-	background:url("icon/icon-thick-check.svg") no-repeat center center;
+	background:url("../assets/icon/icon-thick-check.svg") no-repeat center center;
 }
 input[type="checkbox"],
 input[type="radio"]
@@ -354,11 +354,11 @@ input[type="checkbox"]:checked+.label::after{
 	left:37px;
 }
 .toggle__off::after{
-	background:url("icon/close.svg") no-repeat center center;
+	background:url("../assets/icon/close.svg") no-repeat center center;
 	left:37px;
 }
 .toggle__on::after{
-	background:url("icon/icon-thick-check.svg") no-repeat center center;
+	background:url("../assets/icon/icon-thick-check.svg") no-repeat center center;
 	left:6px;
 }
 
@@ -375,7 +375,7 @@ input[type="checkbox"]:checked+.label::after{
 	margin:0 auto;
 	border:solid 2px var(--color-primary);
 	border-radius:50%;
-	background:url("icon/icon-thick-check-green.svg") no-repeat center center;
+	background:url("../assets/icon/icon-thick-check-green.svg") no-repeat center center;
 	margin-bottom:25px;
 }
 .modal__info{
@@ -452,7 +452,7 @@ input[type="checkbox"]:checked+.label::after{
 .notificiant-banner::after,
 .notificiant-banner-small::after{
 	content:"";
-	background: url("icon/close-copy-2.svg") no-repeat center center;
+	background: url("../assets/icon/close-copy-2.svg") no-repeat center center;
 	width:16px;
 	height:16px;
 	position:absolute;
@@ -497,7 +497,7 @@ input[type="checkbox"]:checked+.label::after{
 	display:inline-block;
 }
 .input-required:valid:not(:placeholder-shown){
-	background:url("icon/icon-thick-check-green.svg") no-repeat 370px center;
+	background:url("../assets/icon/icon-thick-check-green.svg") no-repeat 370px center;
 	background-size:20px 10px;
 }
 
@@ -528,7 +528,7 @@ input[type="checkbox"]:checked+.label::after{
 .input-search{
 	width:300px;
 	padding-left:45px;
-	background:url("icon/icon-search.svg") no-repeat 15px center;
+	background:url("../assets/icon/icon-search.svg") no-repeat 15px center;
 }
 .input-search:active{
 	border-color:#55acee;
@@ -596,7 +596,7 @@ input[type="checkbox"]:checked+.label::after{
 	float:left;
 	width:145px;
 	height:60px;
-	background-image:url("png/logo.png");
+	background-image:url("../assets/png/logo.png");
 
 }
 .nav{
@@ -665,13 +665,13 @@ input[type="checkbox"]:checked+.label::after{
 	margin-bottom:15px;
 }
 .app-pack__img_1{
-	background: url("png/shot-1_2018-11-05/shot-1.png") no-repeat;
+	background: url("../assets/png/shot-1_2018-11-05/shot-1.png") no-repeat;
 }
 .app-pack__img_2{
-	background: url("png/shot-2_2018-11-05/shot-2.png") no-repeat;
+	background: url("../assets/png/shot-2_2018-11-05/shot-2.png") no-repeat;
 }
 .app-pack__img_3{
-	background: url("png/shot-3_2018-11-05/shot-3.png") no-repeat;
+	background: url("../assets/png/shot-3_2018-11-05/shot-3.png") no-repeat;
 }
 .app-pack__name{
 	font-size:20px;
@@ -714,7 +714,7 @@ input[type="checkbox"]:checked+.label::after{
 	width:32px;
 	height:32px;
 	position:absolute;
-	background:url("icon/icon-arrow-right-copy-2.svg") no-repeat center center;
+	background:url("../assets/icon/icon-arrow-right-copy-2.svg") no-repeat center center;
 	top:-10px;
 	left:-40px;
 }

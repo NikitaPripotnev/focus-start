@@ -1,113 +1,88 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charser="utf-8">
+	<meta charset="utf-8">
 	<title>Focus-Start</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 </head>
 <body>
-	<h1 class="h-level h-level-1">Heading Level 1</h1>
-	<h2 class="h-level h-level-2">Heading Level 2</h2>
-	<h3 class="h-level h-level-3">Heading Level 3</h3>
-	<h4 class="h-level h-level-4">Heading Level 4</h4>
-	<p class="paragraph">Nam porttitor blandit accumsan. Ut vel dictum sem,
-		a pretium dui. In malesuada enim in dolor euismod,
-		id commodo mi consectetur. Curabitur at vestibulum nisi.
-		Nullam vehicula nisi velit. Mauris turpis nisl,
-		molestie ut ipsum et, suscipit vehicula odio.
-		Vestibulum interdum vestibulum felis ac molestie. Praesent
-		aliquet quam et libero dictum, vitae dignissim leo eleifend.
-		 In in turpis turpis. Quisque justo turpis,
-		vestibulum non enim nec, tempor mollis mi. Sed vel tristique quam.</p><br>
-		<ul class="menu">
-			<li><a class="menu__a" href="#">Home</a> </li>
-			<li><a class="menu__a" href="#">Women</a> </li>
-			<li><a class="menu__a" href="#">Clothing</a> </li>
-			<li><a class="menu__a" href="#">T-shirt</a> </li>
-		</ul><br>
-	<div class="box">
-		<input type="checkbox" id="check1">
-		<label class="label" for="check1" >click me</label>
-	</div><br>
-	<div class="box disabled">
-		<input type="checkbox">
-		<label class="label">click me</label>
-	</div><br>
-	<div class="box">
-		<input type="radio" id="radio1">
-		<label class="label" for="radio1">click me</label>
-	</div><br>
-	<div class="box disabled">
-		<input type="radio">
-		<label class="label">click me</label>
-	</div><br>
-	<div class="toggle toggle__off"></div><br>
-	<div class="toggle toggle__on"></div><br>
+	<div class="wrapper">
+		<header class="header clearfix">
+			<div class="logo"></div>
+			<nav class="nav">
+				<ul class="nav__menu">
+					<li class=nav__menu__item><a href="index.html">Главная</a></li>
+					<li class=nav__menu__item><a href="category.html">Каталог приложений</a></li>
+					<li class=nav__menu__item><a href="#">О компании</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div class="content-wrapper">
+			<div class="content">
+				<div class="content__top">
 
-	<button class="button button_icon" type="button">BUTTON</button><br>
-	<button class="button button_icon disabled" type="button">BUTTON</button><br>
-	<button class="button button_primary" type="button">BUTTON</button><br>
-	<button class="button button_secondary " type="button">BUTTON</button><br>
-	<button class="button button_primary disabled" type="button">BUTTON</button><br>
-	<div class="step step-1">
-		SHIPPING
-	</div>
-	<div class="step step-2">
-		STEP 2
-	</div>
-	<div class="step step-3">
-		STEP 3
-	</div>
-	<div class="step step-success">
-		SUCCESS
-	</div>
-	<a href="#" class="link">CHECK LINK</a><br>
+					<div class="content__top__header clearfix">
+						<h3 class="h-level h-level-3 content__top__header__h">Пакеты приложений</h3>
+						<input class="input input-search content__top__header__input" type="search"  placeholder="Поиск приложения">
+					</div>
 
-		<select class="select">
-			<option value="check1">check1</option>
-			<option value="check2">check2</option>
-			<option value="check3">check3</option>
-			<option value="check4">check4</option>
-		</select>
+					<div class="app-pack">
+						<div class="app-pack__img app-pack__img_1"></div>
+						<footer>
+							<p class="app-pack__name">Стандартный пакет<p>
+							<time class="app-pack__time" datetime="2012-04-08"> 08 апреля 2012</time>
+						</footer>
+					</div>
 
-	<div class="modal">
-		<div class="modal__oval"></div>
-		<p class="modal__info">Dressing practically doesn’t have to mean wearing active gear.</p>
-	</div><br>
+					<div class="app-pack">
+						<div class="app-pack__img app-pack__img_2"></div>
+						<footer>
+							<p class="app-pack__name">Новый ЦФТ-банк<p>
+							<time class="app-pack__time" datetime="2016-09-09"> 09 Сентября 2016</time>
+						</footer>
+					</div>
 
-	<div class="notificiant-banner notificiant-banner_green">
-		<h2 class="notificiant-banner__title">Main title here</h2>
-		<p class="notificiant-banner__info">There seems to be a problem</p>
-	</div><br>
-	<div class="notificiant-banner notificiant-banner_red">
-		<h2 class="notificiant-banner__title">Main title here</h2>
-		<p class="notificiant-banner__info">There seems to be a problem</p>
-	</div><br>
-	<div class="notificiant-banner notificiant-banner_yellow">
-		<h2 class="notificiant-banner__title">Main title here</h2>
-		<p class="notificiant-banner__info">There seems to be a problem</p>
-	</div><br>
+					<div class="app-pack">
+						<div class="app-pack__img app-pack__img_3"></div>
+						<footer>
+							<p class="app-pack__name">Каталог разработок<p>
+							<time class="app-pack__time" datetime="2015-03-03"> 03 марта 2012</time>
+						</footer>
+					</div>
 
-	<div class="notificiant-banner-small notificiant-banner-small_red">
-		<p class="notificiant-banner-small__info">Danger Text : Grumpy wizards make toxic brew for the evil Queen and Jack.</p>
-	</div><br>
-	<div class="notificiant-banner-small notificiant-banner-small_yellow">
-		<p class="notificiant-banner-small__info">Warning Text : Grumpy wizards make toxic brew for the evil Queen and Jack.</p>
-	</div><br>
-	<div class="notificiant-banner-small notificiant-banner-small_green">
-		<p class="notificiant-banner-small__info">Success Text : Grumpy wizards make toxic brew for the evil Queen and Jack.</p>
-	</div><br>
-	<form action="#" class="form">
-		<input class="input input-search" type="search"  placeholder="Search here"><br>
-		<label class="label-input" for="name">First Name</label>
-		<div class="input-wrapper">
-			<input class="input input-required" type="text" name="name" placeholder="Name" required pattern="[A-ZА-Я]{1}[a-zA-Zа-яА-Я]+$">
-			<div class="requirement requirement-info">Something is wrong, please check your name</div>
-			<div class="requirement requirement-sign">?</div>
+				</div>
+				<div class="content__bottom">
+					<div class="content__bottom__block content__bottom__block_left">
+						<div class="wrapper__header clearfix">
+							<h5 class="h-level h-level-5 wrapper__header__h">Многопотоковые приложения</h5>
+						</div>
+						<div class="content__bottom__list">
+							<ul class="app__menu">
+								<li class=app__menu__item><a class="app__menu__item__name" href="#">Финансовый мониторинг</a><a class="app__menu__item__info">приложений: 5</a></li>
+								<li class=app__menu__item><a class="app__menu__item__name" href="#">Бухгалтерский учет</a><a class="app__menu__item__info">приложений: 2</a></li>
+								<li class=app__menu__item><a class="app__menu__item__name" href="#">О компании</a><a class="app__menu__item__info">приложений: 12</a></li>
+								<li class=app__menu__item><a class="app__menu__item__name" href="#">О компании</a><a class="app__menu__item__info">приложений: 29</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="content__bottom__block content__bottom__block_right">
+						<div class="wrapper__header clearfix">
+							<h5 class="h-level h-level-5 wrapper__header__h">Однопоточные приложения</h5>
+						</div>
+						<div class="content__bottom__list">
+							<ul class="app__menu">
+								<li class="app__menu__item"><a class="app__menu__item__name" href="#">Расчетный центр</a><a class="app__menu__item__info">приложений: 69</a></li>
+								<li class="app__menu__item"><a class="app__menu__item__name" href="#">Банковский гарантии</a><a class="app__menu__item__info">приложений: 44</a></li>
+								<li class="app__menu__item"><a class="app__menu__item__name" href="#">Казначейство</a><a class="app__menu__item__info">приложений: 80</a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</div>
-		<button class="button" type="submit">Отправить</button>
-	</form>
-
+	</div>
 </body>
 </html>
