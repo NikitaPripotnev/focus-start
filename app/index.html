@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charser="utf-8">
+	<title>Focus-Start</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+</head>
+<body>
+	<h1 class="h-level h-level-1">Heading Level 1</h1>
+	<h2 class="h-level h-level-2">Heading Level 2</h2>
+	<h3 class="h-level h-level-3">Heading Level 3</h3>
+	<h4 class="h-level h-level-4">Heading Level 4</h4>
+	<p class="paragraph">Nam porttitor blandit accumsan. Ut vel dictum sem,
+		a pretium dui. In malesuada enim in dolor euismod,
+		id commodo mi consectetur. Curabitur at vestibulum nisi.
+		Nullam vehicula nisi velit. Mauris turpis nisl,
+		molestie ut ipsum et, suscipit vehicula odio.
+		Vestibulum interdum vestibulum felis ac molestie. Praesent
+		aliquet quam et libero dictum, vitae dignissim leo eleifend.
+		 In in turpis turpis. Quisque justo turpis,
+		vestibulum non enim nec, tempor mollis mi. Sed vel tristique quam.</p><br>
+		<ul class="menu">
+			<li><a class="menu__a" href="#">Home</a> </li>
+			<li><a class="menu__a" href="#">Women</a> </li>
+			<li><a class="menu__a" href="#">Clothing</a> </li>
+			<li><a class="menu__a" href="#">T-shirt</a> </li>
+		</ul><br>
+	<div class="box">
+		<input type="checkbox" id="check1">
+		<label class="label" for="check1" >click me</label>
+	</div><br>
+	<div class="box disabled">
+		<input type="checkbox">
+		<label class="label">click me</label>
+	</div><br>
+	<div class="box">
+		<input type="radio" id="radio1">
+		<label class="label" for="radio1">click me</label>
+	</div><br>
+	<div class="box disabled">
+		<input type="radio">
+		<label class="label">click me</label>
+	</div><br>
+	<div class="toggle toggle__off"></div><br>
+	<div class="toggle toggle__on"></div><br>
+
+	<button class="button button_icon" type="button">BUTTON</button><br>
+	<button class="button button_icon disabled" type="button">BUTTON</button><br>
+	<button class="button button_primary" type="button">BUTTON</button><br>
+	<button class="button button_secondary " type="button">BUTTON</button><br>
+	<button class="button button_primary disabled" type="button">BUTTON</button><br>
+	<div class="step step-1">
+		SHIPPING
+	</div>
+	<div class="step step-2">
+		STEP 2
+	</div>
+	<div class="step step-3">
+		STEP 3
+	</div>
+	<div class="step step-success">
+		SUCCESS
+	</div>
+	<a href="#" class="link">CHECK LINK</a><br>
+
+		<select class="select">
+			<option value="check1">check1</option>
+			<option value="check2">check2</option>
+			<option value="check3">check3</option>
+			<option value="check4">check4</option>
+		</select>
+
+	<div class="modal">
+		<div class="modal__oval"></div>
+		<p class="modal__info">Dressing practically doesn’t have to mean wearing active gear.</p>
+	</div><br>
+
+	<div class="notificiant-banner notificiant-banner_green">
+		<h2 class="notificiant-banner__title">Main title here</h2>
+		<p class="notificiant-banner__info">There seems to be a problem</p>
+	</div><br>
+	<div class="notificiant-banner notificiant-banner_red">
+		<h2 class="notificiant-banner__title">Main title here</h2>
+		<p class="notificiant-banner__info">There seems to be a problem</p>
+	</div><br>
+	<div class="notificiant-banner notificiant-banner_yellow">
+		<h2 class="notificiant-banner__title">Main title here</h2>
+		<p class="notificiant-banner__info">There seems to be a problem</p>
+	</div><br>
+
+	<div class="notificiant-banner-small notificiant-banner-small_red">
+		<p class="notificiant-banner-small__info">Danger Text : Grumpy wizards make toxic brew for the evil Queen and Jack.</p>
+	</div><br>
+	<div class="notificiant-banner-small notificiant-banner-small_yellow">
+		<p class="notificiant-banner-small__info">Warning Text : Grumpy wizards make toxic brew for the evil Queen and Jack.</p>
+	</div><br>
+	<div class="notificiant-banner-small notificiant-banner-small_green">
+		<p class="notificiant-banner-small__info">Success Text : Grumpy wizards make toxic brew for the evil Queen and Jack.</p>
+	</div><br>
+	<form action="#" class="form">
+		<input class="input input-search" type="search"  placeholder="Search here"><br>
+		<label class="label-input" for="name">First Name</label>
+		<div class="input-wrapper">
+			<input class="input input-required" type="text" name="name" placeholder="Name" required pattern="[A-ZА-Я]{1}[a-zA-Zа-яА-Я]+$">
+			<div class="requirement requirement-info">Something is wrong, please check your name</div>
+			<div class="requirement requirement-sign">?</div>
+		</div>
+		<button class="button" type="submit">Отправить</button>
+	</form>
+
+</body>
+</html>
