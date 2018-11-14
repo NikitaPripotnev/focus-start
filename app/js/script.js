@@ -17,11 +17,36 @@ var list = [
         p: "Каталог разработок", 
         dataTime: "2012-04-08", 
         time: "03 марта 2012" 
+    },
+    { 
+        img: "../assets/png/shot-1_2018-11-05/shot-1.png", 
+        p: "Стандартный пакет", 
+        dataTime: "2012-04-08", 
+        time: "08 апреля 2012"  
+    },
+    { 
+        img: "../assets/png/shot-2_2018-11-05/shot-2.png", 
+        p: "Новый ЦФТ-банк", 
+        dataTime: "2012-04-08", 
+        time: "09 Сентября 2016" 
+    },
+    { 
+        img: "../assets/png/shot-3_2018-11-05/shot-3.png", 
+        p: "Каталог разработок", 
+        dataTime: "2012-04-08", 
+        time: "03 марта 2012" 
+    },
+    { 
+        img: "../assets/png/shot-2_2018-11-05/shot-2.png", 
+        p: "Новый ЦФТ-банк", 
+        dataTime: "2012-04-08", 
+        time: "09 Сентября 2016" 
     }
 ];
 
 
 function addElements(list, i){
+
     let wrapper = document.createElement("div");
     wrapper.className = "app-pack";
 
@@ -47,8 +72,24 @@ function addElements(list, i){
     return wrapper;
 }
 
-var parent = document.getElementsByClassName("content__top");
+var parent = document.getElementsByClassName("content__top__galery-overflow");
 
 parent[0].appendChild( addElements(list, Math.floor(Math.random() * list.length )));
 parent[0].appendChild( addElements(list, Math.floor(Math.random() * list.length )) );
 parent[0].appendChild( addElements(list, Math.floor(Math.random() * list.length )) );
+parent[0].appendChild( addElements(list, Math.floor(Math.random() * list.length )));
+parent[0].appendChild( addElements(list, Math.floor(Math.random() * list.length )) );
+parent[0].appendChild( addElements(list, Math.floor(Math.random() * list.length )) );
+
+function carousel(){
+    let wrapper = document.createElement("div");
+    wrapper.className = "carousel";
+
+    for(let i=0;i<list.length;i++){
+        let circle = document.createElement("div");
+        circle.className = "carousel__circle";
+        wrapper.appendChild(circle);
+    }
+
+
+}

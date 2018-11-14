@@ -594,7 +594,7 @@ input[type="checkbox"]:checked+.label::after{
 	background-color: #ffffff;
 }
 .wrapper{
-	.background-color:var(--color-light);
+	background-color:var(--color-light);
 
 }
 .logo{
@@ -1149,6 +1149,33 @@ padding:0 160px;
 }
 .table-catalog__name:hover,
 .table-catalog__time:hover,
-.logo:hover{
+.logo:hover,
+.carousel__circle:hover{
 		cursor:pointer;
+}
+
+
+
+
+.content__top__galery-overflow{
+	overflow: hidden;
+	height:260px;
+}
+.carousel{
+	margin-bottom:20px;
+	text-align: center;
+}
+.carousel__circle{
+	width:15px;
+	height:15px;
+	border-radius: 50%;
+	background-color: var(--color-light-grey);
+	display:inline-block;
+	margin:0 10px;
+}
+.carousel__circle:hover{
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.carousel__circle_active{
+	background-color: var(--color-red);
 }
