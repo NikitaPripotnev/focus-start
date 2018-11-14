@@ -27,29 +27,6 @@
 						<input class="input input-search content__top__header__input" type="search"  placeholder="Поиск приложения">
 					</div>
 
-					<div class="app-pack">
-						<div class="app-pack__img app-pack__img_1"></div>
-						<footer>
-							<p class="app-pack__name">Стандартный пакет<p>
-							<time class="app-pack__time" datetime="2012-04-08"> 08 апреля 2012</time>
-						</footer>
-					</div>
-
-					<div class="app-pack">
-						<div class="app-pack__img app-pack__img_2"></div>
-						<footer>
-							<p class="app-pack__name">Новый ЦФТ-банк<p>
-							<time class="app-pack__time" datetime="2016-09-09"> 09 Сентября 2016</time>
-						</footer>
-					</div>
-
-					<div class="app-pack">
-						<div class="app-pack__img app-pack__img_3"></div>
-						<footer>
-							<p class="app-pack__name">Каталог разработок<p>
-							<time class="app-pack__time" datetime="2015-03-03"> 03 марта 2012</time>
-						</footer>
-					</div>
 
 				</div>
 				<div class="content__bottom">
@@ -59,10 +36,22 @@
 						</div>
 						<div class="content__bottom__list">
 							<ul class="app__menu">
-								<li class=app__menu__item><a class="app__menu__item__name" href="#">Финансовый мониторинг</a><a class="app__menu__item__info">приложений: 5</a></li>
-								<li class=app__menu__item><a class="app__menu__item__name" href="#">Бухгалтерский учет</a><a class="app__menu__item__info">приложений: 2</a></li>
-								<li class=app__menu__item><a class="app__menu__item__name" href="#">О компании</a><a class="app__menu__item__info">приложений: 12</a></li>
-								<li class=app__menu__item><a class="app__menu__item__name" href="#">О компании</a><a class="app__menu__item__info">приложений: 29</a></li>
+								<li class=app__menu__item>
+									<a class="app__menu__item__name" href="#">Финансовый мониторинг</a>
+									<svg class ="app__menu__item__arrow"><use xlink:href="#cft-arrow-right"></use></svg>
+									<a class="app__menu__item__info">приложений: 5</a></li>
+								<li class=app__menu__item>
+									<a class="app__menu__item__name" href="#">Бухгалтерский учет</a>
+									<svg class ="app__menu__item__arrow"><use xlink:href="#cft-arrow-right"></use></svg>
+									<a class="app__menu__item__info">приложений: 2</a></li>
+								<li class=app__menu__item>
+									<a class="app__menu__item__name" href="#">О компании</a>
+									<svg class ="app__menu__item__arrow"><use xlink:href="#cft-arrow-right"></use></svg>
+									<a class="app__menu__item__info">приложений: 12</a></li>
+								<li class=app__menu__item>
+									<a class="app__menu__item__name" href="#">О компании</a>
+									<svg class ="app__menu__item__arrow"><use xlink:href="#cft-arrow-right"></use></svg>
+									<a class="app__menu__item__info">приложений: 29</a></li>
 							</ul>
 						</div>
 					</div>
@@ -73,9 +62,18 @@
 						</div>
 						<div class="content__bottom__list">
 							<ul class="app__menu">
-								<li class="app__menu__item"><a class="app__menu__item__name" href="#">Расчетный центр</a><a class="app__menu__item__info">приложений: 69</a></li>
-								<li class="app__menu__item"><a class="app__menu__item__name" href="#">Банковский гарантии</a><a class="app__menu__item__info">приложений: 44</a></li>
-								<li class="app__menu__item"><a class="app__menu__item__name" href="#">Казначейство</a><a class="app__menu__item__info">приложений: 80</a></li>
+								<li class="app__menu__item">
+									<a class="app__menu__item__name" href="#">Расчетный центр</a>
+									<svg class ="app__menu__item__arrow"><use xlink:href="#cft-arrow-right"></use></svg>
+									<a class="app__menu__item__info">приложений: 69</a></li>
+								<li class="app__menu__item">
+									<a class="app__menu__item__name" href="#">Банковский гарантии</a>
+									<svg class ="app__menu__item__arrow"><use xlink:href="#cft-arrow-right"></use></svg>
+									<a class="app__menu__item__info">приложений: 44</a></li>
+								<li class="app__menu__item">
+									<a class="app__menu__item__name" href="#">Казначейство</a>
+									<svg class ="app__menu__item__arrow"><use xlink:href="#cft-arrow-right"></use></svg>
+									<a class="app__menu__item__info">приложений: 80</a></li>
 							</ul>
 						</div>
 					</div>
@@ -84,5 +82,21 @@
 			</div>
 		</div>
 	</div>
+	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+		<symbol id="cft-arrow-right" viewBox="0 0 32 32">
+			<g fill="none" fill-rule="evenodd"  stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+         <path d="M25.864 16L16.197 6zM7 16h16.25M25.864 16l-9.667 10"/>
+     </g>
+		</symbol>
+	</svg>
+
+	<script src="../js/script.js" type="text/javascript">
+	</script>
+	<!--
+	<script type="text/javascript" src="https://api.coindesk.com/v1/bpi/currentprice.json">
+		var rate = document.getElementsByClassName("nav__menu__item");
+
+	</script>
+	!-->
 </body>
 </html>
