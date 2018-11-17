@@ -1,94 +1,7 @@
-/*
-var list = [
-    {
-        img: "../assets/png/shot-1_2018-11-05/shot-1.png",
-        p: "Стандартный пакет",
-        dataTime: "2012-04-08",
-        time: "08 апреля 2012"
-    },
-    {
-        img: "../assets/png/shot-2_2018-11-05/shot-2.png",
-        p: "Новый ЦФТ-банк",
-        dataTime: "2012-04-08",
-        time: "09 Сентября 2016"
-    },
-    {
-        img: "../assets/png/shot-3_2018-11-05/shot-3.png",
-        p: "Каталог разработок",
-        dataTime: "2012-04-08",
-        time: "03 марта 2012"
-    },
-    {
-        img: "../assets/png/shot-1_2018-11-05/shot-1.png",
-        p: "Стандартный пакет",
-        dataTime: "2012-04-08",
-        time: "08 апреля 2012"
-    },
-    {
-        img: "../assets/png/shot-2_2018-11-05/shot-2.png",
-        p: "Новый ЦФТ-банк",
-        dataTime: "2012-04-08",
-        time: "09 Сентября 2016"
-    },
-    {
-        img: "../assets/png/shot-3_2018-11-05/shot-3.png",
-        p: "Каталог разработок",
-        dataTime: "2012-04-08",
-        time: "03 марта 2012"
-    },
-    {
-        img: "../assets/png/shot-2_2018-11-05/shot-2.png",
-        p: "Новый ЦФТ-банк",
-        dataTime: "2012-04-08",
-        time: "09 Сентября 2016"
-    }
-];
-*/
-var list = [
-    {
-        img: "../assets/png/numbers/1.png",
-        p: "Стандартный пакет",
-        dataTime: "2012-04-08",
-        time: "08 апреля 2012"
-    },
-    {
-        img: "../assets/png/numbers/2.png",
-        p: "Новый ЦФТ-банк",
-        dataTime: "2012-04-08",
-        time: "09 Сентября 2016"
-    },
-    {
-        img: "../assets/png/numbers/3.png",
-        p: "Каталог разработок",
-        dataTime: "2012-04-08",
-        time: "03 марта 2012"
-    },
-    {
-        img: "../assets/png/numbers/4.png",
-        p: "Стандартный пакет",
-        dataTime: "2012-04-08",
-        time: "08 апреля 2012"
-    },
-    {
-        img: "../assets/png/numbers/5.png",
-        p: "Новый ЦФТ-банк",
-        dataTime: "2012-04-08",
-        time: "09 Сентября 2016"
-    },
-    {
-        img: "../assets/png/numbers/6.png",
-        p: "Каталог разработок",
-        dataTime: "2012-04-08",
-        time: "03 марта 2012"
-    },
-    {
-        img: "../assets/png/numbers/7.png",
-        p: "Новый ЦФТ-банк",
-        dataTime: "2012-04-08",
-        time: "09 Сентября 2016"
-    }
-];
+import * as module from "./application-download.js";
 
+var list =  module.downloadInfoApplication("http://localhost:3000/API/packet-applications.json");
+console.log(list, "script.js");
 function addElements(list, i){
     let item = document.createElement("li");
 
@@ -151,7 +64,7 @@ document.querySelector(".slider__arrow_left").onclick = function() {
 document.querySelector(".slider__arrow_right").onclick = function() {
   let circle = document.getElementsByClassName("carousel__circle");
   circle[indexOfSlider].classList.remove("carousel__circle_active");
-  if(indexOfSlider!=6){
+  if(indexOfSlider!=list.length-1){
     indexOfSlider++;
     positionOfSlider = positionOfSlider - widthOfSlider;
   }else{
@@ -171,7 +84,7 @@ function circleCarousel(){
   this.classList.add("carousel__circle_active");
 }
 
-function carouselka(){
+function carouselAddElements(){
     let wrapper = document.createElement("div");
     wrapper.className = "carousel";
 
@@ -187,4 +100,7 @@ function carouselka(){
     }
     return wrapper;
 }
-document.querySelector(".content__top").appendChild(carouselka());
+document.querySelector(".content__top").appendChild(carouselAddElements());
+
+
+
