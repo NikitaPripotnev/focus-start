@@ -1,26 +1,17 @@
-export const xhr = new XMLHttpRequest();
-let listApplication;
+const xhr = new XMLHttpRequest();
 
-export function downloadInfoApplication(url){
-  let list;
+export let list;
+export function downloadData(url, someFunc){
   xhr.open('GET', url, true);
   xhr.send();
-
-  xhr.onreadystatechange = function() { 
+  xhr.onreadystatechange = function() {
     if (xhr.readyState != 4) return;
 
     if (xhr.status != 200) {
-      alert(xhr.status + ': ' + xhr.statusText);
+      console.log(xhr.status + ': ' + xhr.statusText);
     } else {
-      alert(xhr.responseText);
+      list = JSON.parse(xhr.responseText);
+      someFunc();
     }
-
   }
-  xhr.onload = function(){
-    list = JSON.parse(xhr.responseText);
-    console.log(list, "onload");
-  }
-  console.log(list, "downloadInfoApplication");
-  return list;
 };
-

@@ -1,9 +1,16 @@
-import * as module from "./application-download.js";
+import * as carouselModule from "./carousel.js";
+import * as requestModule from "./application-download.js";
+//var list =  module.downloadInfoApplication("http://localhost:3000/API/packet-applications.json");
+let listApplication;
 
-var list =  module.downloadInfoApplication("http://localhost:3000/API/packet-applications.json");
-console.log(list, "script.js");
+function getLengthList(){
+  return listApplication.length;
+}
 function addElements(list, i){
     let item = document.createElement("li");
+
+    let a = document.createElement("a");
+    a.href = "category-application.html?"+i;
 
     let wrapper = document.createElement("div");
     wrapper.className = "app-pack";
@@ -17,90 +24,54 @@ function addElements(list, i){
 
     let p=document.createElement("p");
     p.className = "app-pack__name";
-    p.innerText=list[i].p;
+    p.innerText=list[i].title;
     footer.appendChild(p);
 
     let time=document.createElement("time");
     time.className = "app-pack__time";
-    time.innerText=list[i].time;
+    time.innerText=list[i].title_time;
     time.dataTime = list[i].dataTime;
     footer.appendChild(time);
     wrapper.appendChild(footer);
 
-    item.appendChild(wrapper);
+    a.appendChild(wrapper);
+    item.appendChild(a);
 
     return item;
-}
+};
 //
-let carousel = document.querySelector(".content__top__galery-overflow__list");
-carousel.appendChild(addElements(list, list.length-1));
-for(let i=0;i<7;i++){
-  carousel.appendChild(addElements(list, i));
-}
-carousel.appendChild(addElements(list, 0))
 
-
-
-let indexOfSlider = 0;
-let positionOfSlider = 0;
-let widthOfSlider = 360;
-
-document.querySelector(".slider__arrow_left").onclick = function() {
-
-  let circle = document.getElementsByClassName("carousel__circle");
-  circle[indexOfSlider].classList.remove("carousel__circle_active");
-  if(indexOfSlider!=0){
-    indexOfSlider--;
-    positionOfSlider = positionOfSlider + widthOfSlider;
-  }else{
-    indexOfSlider = list.length-1;
-    positionOfSlider = -widthOfSlider*indexOfSlider;
-  }
-  carousel.style.marginLeft = positionOfSlider + 'px';
-  circle[indexOfSlider].classList.add("carousel__circle_active");
-
-};
-
-document.querySelector(".slider__arrow_right").onclick = function() {
-  let circle = document.getElementsByClassName("carousel__circle");
-  circle[indexOfSlider].classList.remove("carousel__circle_active");
-  if(indexOfSlider!=list.length-1){
-    indexOfSlider++;
-    positionOfSlider = positionOfSlider - widthOfSlider;
-  }else{
-    indexOfSlider = 0;
-    positionOfSlider = -widthOfSlider*indexOfSlider;
-  }
-  carousel.style.marginLeft = positionOfSlider + 'px';
-  circle[indexOfSlider].classList.add("carousel__circle_active");
-
-};
-
-function circleCarousel(){
-  indexOfSlider = this.dataset.number;
-  positionOfSlider = -widthOfSlider*indexOfSlider;
-  carousel.style.marginLeft = positionOfSlider + 'px';
-  document.querySelector(".carousel__circle_active").classList.remove("carousel__circle_active");
-  this.classList.add("carousel__circle_active");
-}
-
+//точки для карусели
 function carouselAddElements(){
     let wrapper = document.createElement("div");
     wrapper.className = "carousel";
 
-    for(let i=0;i<list.length;i++){
+    for(let i=0;i<listApplication.length;i++){
         let circle = document.createElement("div");
         circle.classList.add("carousel__circle");
         circle.dataset.number = i;
-        circle.onclick = circleCarousel;
+        circle.onclick = carouselModule.circleCarouselClick;
         if(i==0){
           circle.classList.add("carousel__circle_active");
         }
         wrapper.appendChild(circle);
     }
     return wrapper;
+};
+
+document.querySelector(".slider__arrow_left").onclick = carouselModule.sliderLeftArrow;
+document.querySelector(".slider__arrow_right").onclick = carouselModule.sliderRightArrow;
+
+//Рендер приложений для карусели
+function renderCarousel(){
+  listApplication = requestModule.list;
+  let  carousel = carouselModule.carousel;
+  carousel.appendChild(addElements(listApplication, listApplication.length-1));
+  for(let i=0;i<7;i++){
+    carousel.appendChild(addElements(listApplication, i));
+  }
+  carousel.appendChild(addElements(listApplication, 0));
+  document.querySelector(".content__top").appendChild(carouselAddElements());
 }
-document.querySelector(".content__top").appendChild(carouselAddElements());
 
-
-
+requestModule.downloadData("http://localhost:3000/API/packet-applications.json", renderCarousel);
