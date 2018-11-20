@@ -1,0 +1,16 @@
+{
+    "id":4,
+    "title": "Аренда сейфов",
+    "lastUpdate":12313124124112,
+    "guid": "rent-safes-application",
+    "img": "assets/png/application/vr.png",
+    "img_category": "assets/png/application-category/vr.png",
+    "price": "99",
+    "dataTime": "2016-02-02",
+    "title_time": "02 Февраля 2016",
+    "short_information": "Приложение лицензировано в 25 банках",
+    "application__type":"Базовое",
+    "application__developer":"ЦФТ",
+    "application__code":"J78KYR92",
+    "application__requirement": "совместимо с v.14.1, ТЯ v.7.4.0.0 и выше, при наличии лицензии на Проигрыватель форм в web"
+}

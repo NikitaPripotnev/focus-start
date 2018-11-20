@@ -1,0 +1,16 @@
+{
+    "id":0,
+    "title": "Стандартный пакет",
+    "lastUpdate":12313124124112,
+    "guid": "standart-pack-application",
+    "img": "assets/png/standart-pack/shot-1.png",
+    "img_category": "assets/png/application-category/standart-pack.png",
+    "price": "111",
+    "dataTime": "2016-09-09",
+    "title_time": "09 Сентября 2016",
+    "short_information": "Приложение лицензировано в 25 банках",
+    "application__type":"Базовое",
+    "application__developer":"ЦФТ",
+    "application__code":"1P465E02",
+    "application__requirement": "совместимо с v.14.1, ТЯ v.7.4.0.0 и выше, при наличии лицензии на Проигрыватель форм в web"
+}

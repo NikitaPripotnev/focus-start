@@ -1,0 +1,16 @@
+{
+    "id":2,
+    "title": "Каталог разработок",
+    "lastUpdate":12313124124112,
+    "guid": "development-catalog-application",
+    "img": "assets/png/development-catalog/shot-3.png",
+    "img_category": "assets/png/application-category/dev-catalog.png",
+    "price": "145",
+    "dataTime": "2018-10-11",
+    "title_time": "10 Ноября 2018",
+    "short_information": "Подходит для всехъ",
+    "application__type":"Базовое",
+    "application__developer":"ЦФТ",
+    "application__code":"Z258023R",
+    "application__requirement": "совместимо с v.14.1, ТЯ v.7.4.0.0 и выше, при наличии лицензии на Проигрыватель форм в web"
+}

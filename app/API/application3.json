@@ -1,0 +1,16 @@
+{
+    "id":3,
+    "title": "Cash Managment",
+    "lastUpdate":12313124124112,
+    "guid": "cash-managment-application",
+    "img": "assets/png/application/apCl.png",
+    "img_category": "assets/png/application-category/apCl.png",
+    "price": "87",
+    "dataTime": "2010-01-01",
+    "title_time": "01 Января 2010",
+    "short_information": "Для опытных пользователей",
+    "application__type":"Базовое",
+    "application__developer":"ЦФТ",
+    "application__code":"31GH5024",
+    "application__requirement": "совместимо с v.14.1, ТЯ v.7.4.0.0 и выше, при наличии лицензии на Проигрыватель форм в web"
+}

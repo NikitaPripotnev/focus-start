@@ -1,0 +1,16 @@
+{
+    "id":1,
+    "title": "Новый ЦФТ-Банк",
+    "lastUpdate":12313124124112,
+    "guid": "new-cft-bank-application",
+    "img": "assets/png/new-cft-bank/shot-2.png",
+    "img_category": "assets/png/application-category/new-cft-bank.png",
+    "price": "45",
+    "dataTime": "2012-04-15",
+    "title_time": "15 апреля 2012",
+    "short_information": "Отличное приложение",
+    "application__type":"Базовое",
+    "application__developer":"ЦФТ",
+    "application__code":"T2065102",
+    "application__requirement": "совместимо с v.14.1, ТЯ v.7.4.0.0 и выше, при наличии лицензии на Проигрыватель форм в web"
+}

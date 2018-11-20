@@ -1,11 +1,14 @@
 import * as requestModule from "./application-download.js";
+import {Basket} from "./basket.js";
 
 let listApplication;
-let linkSideBar;
+let numApp=7;
+let basket;
 let get = location.search;
-if(get == '') get=0
+console.log(get, "start");
+if(get == '') get = "standart-pack.json"  ;
 else{
-  get = get.split("?")
+  get = get.replace("?", "");
 };
 
 function addDeleteActiveLink(link){
@@ -14,61 +17,74 @@ function addDeleteActiveLink(link){
   link.classList.add("link_active");
 }
 
-function renderAppInfo(i){
+function renderAppInfo(){
   listApplication = requestModule.list;
-  console.log(listApplication, i, listApplication[i],"from renerAppInfo");
+  console.log(listApplication,"from renerAppInfo");
   let wrap = document.querySelector(".category-content");
 
-  wrap.querySelector(".application__title").innerText = listApplication[i].title;
+  wrap.querySelector(".application__title").innerText = listApplication.title;
 
   let appTime = wrap.querySelector(".application__time");
-  appTime.innerText = listApplication[i].title_time;
-  appTime.dataTime = listApplication[i].dataTime;
+  appTime.innerText = listApplication.title_time;
+  appTime.dataTime = listApplication.dataTime;
 
-  wrap.querySelector(".application__short-information").innerText = listApplication[i].short_information;
+  wrap.querySelector(".application__short-information").innerText = listApplication.short_information;
 
-  wrap.querySelector(".application__type").innerText = listApplication[i].application__type;
+  wrap.querySelector(".application__type").innerText = listApplication.application__type;
 
-  wrap.querySelector(".application__developer").innerText = listApplication[i].application__developer;
+  wrap.querySelector(".application__developer").innerText = listApplication.application__developer;
 
-  wrap.querySelector(".application__code").innerText = listApplication[i].application__code;
+  wrap.querySelector(".application__code").innerText = listApplication.application__code;
 
-  wrap.querySelector(".application__requirement").innerText = listApplication[i].application__requirement;
+  wrap.querySelector(".application__requirement").innerText = listApplication.application__requirement;
 
-  wrap.querySelector(".application__info2__img").src = listApplication[i].img_category;
+  wrap.querySelector(".application__info2__img").src = listApplication.img_category;
+
+  wrap.querySelector(".application__info2__price").innerText = listApplication.price;
+
+  wrap.querySelector(".button_basket").onclick = clickButtonBasket;
 
 }
 
+
 function renderApp(){
+
   let template = document.querySelector(".application");
   let wrap = document.querySelector(".category-content");
 
   wrap.appendChild(template.content.cloneNode(true));
-  renderAppInfo(get[1]);
-}
-
-export function categoryOnLoad(){
-  requestModule.downloadData("http://localhost:3000/API/packet-applications.json", renderApp);
+  renderAppInfo();
 }
 
 function sideBarFunc(){
 
-  let indexApp=0;
-  console.log("вызов sideBar")
-  for(indexApp; indexApp<listApplication.length; indexApp++){
-          if(listApplication[indexApp].title==linkSideBar.innerHTML){
-            break;
-          }
-      }
-  if(indexApp==listApplication.length){
-    indexApp=0;
-    alert("Извините, данное приложение временно отсутствует")
-  }
-  addDeleteActiveLink(linkSideBar);
-  renderAppInfo(indexApp);
+  addDeleteActiveLink(this);
+  renderAppInfo();
 }
 
-export function clickSideBar(){
-  linkSideBar = this;
-  requestModule.downloadData("http://localhost:3000/API/packet-applications.json", sideBarFunc );
+export function clickSideBar(id){
+  console.log(this, id, "clickSideBar")
+  if(id>=numApp){
+    alert("Извините, данное приложение временно отсутствует")
+  }
+  else{
+    let funcWrap = sideBarFunc.bind(this);
+    requestModule.downloadData("http://localhost:3000/API/application" + id + ".json", funcWrap );
+  }
+}
+
+
+
+export function categoryOnLoad(){
+  console.log(get, "load");
+  requestModule.downloadData("http://localhost:3000/API/application" + get + ".json", renderApp);
+  basket = new Basket(0);
+  console.log(basket.price, "basket price load page");
+}
+
+function clickButtonBasket(){
+  basket.sum(listApplication.price);
+}
+export function clickClose(){
+  basket.clear();
 }

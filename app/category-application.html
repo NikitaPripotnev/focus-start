@@ -8,16 +8,22 @@
 </head>
 <body onload="">
 	<div class="wrapper">
-		<header class="header">
+		<header class="header clearfix">
 			<div class="logo"></div>
 			<nav class="nav">
 				<ul class="nav__menu">
 					<li class="nav__menu__item"><a class="nav__menu__item__link" href="index.html">Главная</a></li>
-					<li class="nav__menu__item"><a class="nav__menu__item__link link_active" href="category-application.html">Каталог приложений</a></li>
+					<li class="nav__menu__item"><a class="nav__menu__item__link link_active" href="category-application.html?0">Каталог приложений</a></li>
 					<li class="nav__menu__item"><a class="nav__menu__item__link" href="#">О компании</a></li>
 				</ul>
 			</nav>
-			<div class="clearfix"></div>
+			<div class="header__basket">
+				<div class="header__basket-without-close">
+					<svg class ="header__basket__svg header__basket__svg-basket"><use xlink:href="#cft-basket"></use></svg>
+					<span class="header__basket__price">234</span><span class="header__basket__dollar">$</span>
+				</div>
+				<svg class ="header__basket__svg header__basket__svg-close" style="display: none;"><use xlink:href="#cft-close"></use></svg>
+			</div>
 		</header>
 		<div class="content-wrapper clearfix">
 			<div class="content catalog">
@@ -66,7 +72,12 @@
 							<div>
 								<img class="application__info2__img" src="../assets/png/shot-2_2018-11-10/shot-2.png" alt="Новый ЦФТ-банк">
 							</div>
-							<button class="button button_icon application__button" type="button">В КОРЗИНУ</button>
+							<div class="application__info2__button-with-price">
+								<span class="application__info2__dollar">$</span>
+								<span class="application__info2__price">138</span>
+								<button class="button button_icon button_basket" type="button">В КОРЗИНУ</button>
+							</div>
+
 		        </div>
 					</div>
 
@@ -95,11 +106,28 @@
 	</div>
 
 
-	<script src="js/application-download.js" type="module">
-	</script>
-	<script src="js/application-category-functions.js" type="module">
-	</script>
-	<script src="js/application-category.js" type="module">
-	</script>
+	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+		<symbol id="cft-basket" viewBox="0 0 32 32">
+			<g fill="none" fill-rule="evenodd"  stroke-linecap="round">
+					<path stroke-width="2" d="M6.374 13.224h18.702c.275 0 .434.047.354.344l-2.85 10.686c-.08.292-.294.64-.482.64H9.352c-.187 0-.401-.436-.481-.734L6.02 13.67c-.08-.292.078-.446.353-.446zM13.78 7l-5.446 6.224M17.67 7l5.447 6.224"/>
+					<path d="M12 17.114v3.113M20 17.114v3.113M16 17.114v3.113"/>
+			</g>
+		</symbol>
+		<symbol id="cft-close" viewBox="0 0 32 32">
+			<defs>
+				<path id="a" d="M1.122.196l-.926.925a.663.663 0 0 0 0 .943l17.74 17.74c.261.262.682.26.942 0l.925-.925a.663.663 0 0 0 0-.943L2.066.196a.663.663 0 0 0-.943 0z"/>
+			</defs>
+			<g fill="none" fill-rule="evenodd">
+				<path stroke-linecap="round" stroke-width="2" d="M7.429 7.429L24.57 24.57M24.571 7.429L7.43 24.57"/>
+			</g>
+		</symbol>
+	</svg>
+
+	<script src="js/basket.js" type="module"></script>
+	<script src="js/application-download.js" type="module"></script>
+	<script src="js/application-category-functions.js" type="module"></script>
+	<script src="js/application-category.js" type="module"></script>
+
+
 </body>
 </html>

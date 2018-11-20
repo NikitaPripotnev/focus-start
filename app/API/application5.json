@@ -1,0 +1,16 @@
+{
+    "id":5,
+    "title": "Банковские гарантии",
+    "lastUpdate":12313124124112,
+    "guid": "bank-guarantees-application",
+    "img": "assets/png/application/xi-phones.png",
+    "img_category": "assets/png/application-category/xi-phones.png",
+    "price": "210",
+    "dataTime": "2011-03-03",
+    "title_time": "03 Марта 2011",
+    "short_information": "Приложение лицензировано в 25 банках",
+    "application__type":"Базовое",
+    "application__developer":"ЦФТ",
+    "application__code":"1G399991",
+    "application__requirement": "совместимо с v.14.1, ТЯ v.7.4.0.0 и выше, при наличии лицензии на Проигрыватель форм в web"
+}

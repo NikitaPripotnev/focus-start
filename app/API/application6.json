@@ -1,0 +1,16 @@
+{
+    "id":6,
+    "title": "Казначейство",
+    "lastUpdate":12313124124112,
+    "guid": "exchequer-application",
+    "img": "assets/png/application/galaxy-s8_jump_phoneplus.png",
+    "img_category": "assets/png/application-category/galaxy-s8_jump_phoneplus.png",
+    "price": "5",
+    "dataTime": "2017-04-13",
+    "title_time": "13 Апреля 2017",
+    "short_information": "Приложение лицензировано в 25 банках",
+    "application__type":"Базовое",
+    "application__developer":"ЦФТ",
+    "application__code":"29104JUY",
+    "application__requirement": "совместимо с v.14.1, ТЯ v.7.4.0.0 и выше, при наличии лицензии на Проигрыватель форм в web"
+}
