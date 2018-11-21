@@ -76,14 +76,12 @@ export function clickSideBar(id){
 
 
 export function categoryOnLoad(){
-  console.log(get, "load");
   requestModule.downloadData("http://localhost:3000/API/application" + get + ".json", renderApp);
   basket = new Basket(0);
-  console.log(basket.price, "basket price load page");
 }
 
 function clickButtonBasket(){
-  basket.sum(listApplication.price);
+  basket.addApp(listApplication.price, listApplication.id);
 }
 export function clickClose(){
   basket.clear();

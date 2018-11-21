@@ -5,18 +5,38 @@ let basketClose = document.querySelector(".header__basket__svg-close");
 export class Basket  {
   constructor(price) {
     this.price=price;
+    this.appData = [];
+
+    //перенести за класс
     basketPrice.innerText=this.price;
   }
-  sum(price){
+  addApp(price, id){
+    let flag = false;
     this.price= parseInt(this.price) + parseInt(price);
+    this.appData.forEach(function(elem, i){
+      if((elem.id)==id){
+        elem.count++;
+        flag=true;
+      }
+    });
+    if(!flag){
+      this.appData.push({id: id, count: 1});
+    }
+    console.log(this.appData, "addApp in class Basket");
+
+
+    //перенести за класс
     basketPrice.innerText=this.price;
     if(basketClose.style.display=="none"){
       basketClose.style.display = "inline-block";
-      console.log(basketClose, basketClose.style.display);
     }
   }
   clear(){
     this.price=0;
+    this.appData = [];
+    console.log(this.appData, "clear ib class Basket");
+
+    //перенести за класс
     basketPrice.innerText=this.price;
     basketClose.style.display = "none";
   }
