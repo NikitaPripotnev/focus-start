@@ -33,6 +33,7 @@ html,body{
 body{
 	position: relative;
 	min-width:1600px;
+	max-width:1600px;
 }
 .h-level{
 	font-weight: bold;
