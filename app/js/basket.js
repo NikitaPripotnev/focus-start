@@ -11,8 +11,7 @@ export class Basket  {
     basketPrice.innerText=this.price;
   }
   addApp(price, id){
-
-    this.price = parseInt(price)+parseInt(this.price);
+    this.price = price+this.price;
     let index=this.appData.findIndex(function(elem,i){
       return elem.id==id;
     });

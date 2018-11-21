@@ -81,7 +81,7 @@ export function categoryOnLoad(){
 }
 
 function clickButtonBasket(){
-  basket.addApp(listApplication.price, listApplication.id);
+  basket.addApp(parseInt(listApplication.price), listApplication.id);
 }
 export function clickClose(){
   basket.clear();
