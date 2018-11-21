@@ -11,17 +11,19 @@ export class Basket  {
     basketPrice.innerText=this.price;
   }
   addApp(price, id){
-    let flag = false;
-    this.price= parseInt(this.price) + parseInt(price);
-    this.appData.forEach(function(elem, i){
-      if((elem.id)==id){
-        elem.count++;
-        flag=true;
-      }
+
+    this.price = parseInt(price)+parseInt(this.price);
+    let index=this.appData.findIndex(function(elem,i){
+      return elem.id==id;
     });
-    if(!flag){
+    if(index!=-1){
+      this.appData[index].count++;
+    }
+    else{
       this.appData.push({id: id, count: 1});
     }
+
+
     console.log(this.appData, "addApp in class Basket");
 
 
