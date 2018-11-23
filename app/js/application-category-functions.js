@@ -3,7 +3,7 @@ import {Basket} from "./basket.js";
 
 let listApplication;
 let numApp=7;
-let basket;
+export let basket;
 let get = location.search;
 console.log(get, "start");
 if(get == '') get = "standart-pack.json"  ;

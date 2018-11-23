@@ -34,6 +34,7 @@
 					<ul class="app__menu catalog__nav__menu">
 						<li class="catalog__nav__menu__item"><a class="catalog__nav__menu__item__link  link_active" href="#">Стандартный пакет</a></li>
 						<li class="catalog__nav__menu__item"><a class="catalog__nav__menu__item__link" href="#">Новый ЦФТ-Банк</a></li>
+						<li class="catalog__nav__menu__item"><a class="catalog__nav__menu__item__link" href="#">Каталог разработок</a></li>
 						<li class="catalog__nav__menu__item"><a class="catalog__nav__menu__item__link" href="#">Cash Managment</a></li>
 						<li class="catalog__nav__menu__item"><a class="catalog__nav__menu__item__link" href="#">Аренда сейфов</a></li>
 						<li class="catalog__nav__menu__item"><a class="catalog__nav__menu__item__link" href="#">Банковские гарантии</a></li>
@@ -100,11 +101,83 @@
 					</div>
 				</template>
 
-
 			</div>
 		</div>
+
 	</div>
 
+	<template id="basket-box">
+		<div class="basket">
+			<div class="basket__stages">
+				<div class="step step-1">
+					Список приложений
+				</div>
+				<div class="step step-2 disabled">
+					Оплата
+				</div>
+				<div class="step step-3 disabled">
+					Контактная информация
+				</div>
+				<div class="step step-4 disabled">
+					Подтверждение
+				</div>
+			</div>
+			<table class="basket__table">
+				<tr class="basket__table__tr">
+					<th class="basket__table__th">приложение</th>
+					<th class="basket__table__th">стоимость</th>
+					<th class="basket__table__th"></th>
+					<th class="basket__table__th">итог</th>
+					<th class="basket__table__th"></th>
+				</tr>
+
+
+			</table>
+			<div class="basket__to-order">
+				<span class="basket__to-order__dollars">$549</span>
+				<span class="basket__to-order__cents">90</span>
+				<button class="button button_primary" type="button">ДАЛЕЕ</button>
+			</div>
+		</div>
+	</template>
+
+	<template id="table-row">
+		<tr class="basket__table__tr">
+			<td class="basket__table__td basket__table__td_1">
+					<div class="basket__table__td__img">
+						<img class="basket__table__td__image" src="../assets/png/shot-2_2018-11-11/shot-2.png" alt="">
+					</div>
+					<div class="basket__table__td__label">
+						<h5 class="basket__table__td__h h-level-5">Новый ЦФТ-Банк</h5>
+						<div class="box">
+							<input class="basket__table__checkbox" type="checkbox">
+							<label class="label basket__table__checkbox-label">установка и настройка</label>
+						</div>
+					</div>
+			</td>
+			<td class="basket__table__td basket__table__td_2">
+				<span class="table__price">$138</span>
+			</td>
+			<td class="basket__table__td basket__table__td_3">
+				<div class="toggle-app">
+					<div class="toggle-app__minus">
+						-
+					</div>
+					<div class="toggle-app__center">
+					</div>
+					<div class="toggle-app__plus">
+						+
+					</div>
+				</div>
+			</td>
+			<td class="basket__table__td basket__table__td_4">
+				<span class="table__sum-price">$138</span>
+			</td>
+			<td class="basket__table__td basket__table__td_5">
+				<svg class ="basket__table__td__rubish"><use xlink:href="#cft-rubish-bin"></use></svg>
+			</td>
+		</tr>
+	</template>
 
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 		<symbol id="cft-basket" viewBox="0 0 32 32">
@@ -119,6 +192,19 @@
 			</defs>
 			<g fill="none" fill-rule="evenodd">
 				<path stroke-linecap="round" stroke-width="2" d="M7.429 7.429L24.57 24.57M24.571 7.429L7.43 24.57"/>
+			</g>
+		</symbol>
+
+		<symbol id="cft-rubish-bin" viewBox="0 0 32 32">
+			<defs>
+				<path id="a-rubish" d="M1 3h16v18H1z"/>
+				<mask id="b-rubish" width="16" height="18" x="0" y="0" fill="#fff">
+						<use xlink:href="#a"/>
+				</mask>
+			</defs>
+			<g fill="none" fill-rule="evenodd" stroke="#4990E2" transform="translate(7 6)">
+				<use stroke-width="2" mask="url(#b-rubish)" xlink:href="#a-rubish"/>
+				<path stroke-linecap="round" stroke-width="2" d="M0 4h18.136M12.41 2.864a.477.477 0 0 1-.478.477H6.205a.477.477 0 0 1-.478-.477V.477c0-.263.214-.477.478-.477h5.727c.263 0 .477.214.477.477v2.387zM5.25 7.114v8.59M9.068 7.114v8.59M12.886 7.114v8.59"/>
 			</g>
 		</symbol>
 	</svg>

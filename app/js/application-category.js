@@ -1,5 +1,7 @@
 import * as appCategoryFunctions from "./application-category-functions.js";
 import {basketFocus, basketUnFocus} from "./basket.js";
+import {drawBasket} from "./basket-draw.js";
+
 
 appCategoryFunctions.categoryOnLoad();
 
@@ -12,5 +14,8 @@ linksSideBar.forEach(function(element, id){
 let basketWithoutClose = document.querySelector(".header__basket-without-close");
 basketWithoutClose.onmouseover = basketFocus;
 basketWithoutClose.onmouseout = basketUnFocus;
+
+let funcClickBasket = drawBasket.bind(appCategoryFunctions.basket);
+basketWithoutClose.onclick = funcClickBasket;
 
 document.querySelector(".header__basket__svg-close").onclick = appCategoryFunctions.clickClose;
