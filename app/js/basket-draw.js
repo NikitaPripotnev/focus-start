@@ -21,6 +21,7 @@ function renderAppInBasket(index){
   let tr = document.getElementById("table-row");
   let clone = tr.content.cloneNode(true);
 
+
   clone.querySelector(".basket__table__td__image").src = appParam.img_category;
 
   clone.querySelector(".basket__table__td__h").innerText = appParam.title;
@@ -31,12 +32,70 @@ function renderAppInBasket(index){
 
   clone.querySelector(".basket__table__checkbox-label").htmlFor = "check"+index;
 
-  clone.querySelector(".table__sum-price").innerText = appParam.price*this.count;
+  let sumPrice = clone.querySelector(".table__sum-price");
+  sumPrice.innerText = appParam.price*this.count;
+
+  let countApp = clone.querySelector(".toggle-app__count");
+  countApp.innerText = this.count;
+
+  let clickPlus = basketCountPlus.bind(this,sumPrice, countApp, appParam.price);
+  clone.querySelector(".toggle-app__plus").onclick = clickPlus;
+
+  let clickMinus = basketCountMinus.bind(this,sumPrice, countApp, appParam.price);
+  clone.querySelector(".toggle-app__minus").onclick = clickMinus;
+
+  let rubish = clone.querySelector(".basket__table__td__rubish");
+  let clickDelete = deleteAppBasket.bind(rubish,appCategoryFunctions.basket);
+  rubish.onclick = clickDelete;
+  
   table.appendChild(clone);
-  resultSum();
+  addIdElements();
+  resultSum(appCategoryFunctions.basket.price);
 }
 
-function resultSum(){
-  document.querySelector(".basket__to-order__dollars").innerText = appCategoryFunctions.basket.price;
+function addIdElements(){
+  let parent = document.querySelector(".basket__table");
+  let child = parent.querySelectorAll(".basket__table__tr-data");
+  child.forEach(function(elem, index){
+    elem.id = "basket-tr"+index;
+    elem.querySelector(".basket__table__td__rubish").dataset.id = index;
+  });
+}
+
+function deleteAppBasket(basket){
+  let index = this.dataset.id;
+  let parent = document.querySelector(".basket__table");
+  let child = document.getElementById("basket-tr"+index);
+  let sum = child.querySelector(".table__sum-price").innerText;
+  console.log(index,  parent, child, sum, "delete");
+  appCategoryFunctions.basket.price-=parseInt(sum);
+  resultSum(appCategoryFunctions.basket.price);
+  basket.appData.splice(index,1);
+  parent.removeChild(child);
+  addIdElements();
+}
+
+function basketCountPlus(elementSumPrice, elementCountApp, priceSingle){
+  this.count++;
+  console.log( "plus click");
+  elementSumPrice.innerText = this.count*priceSingle;
+  elementCountApp.innerText = this.count;
+  appCategoryFunctions.basket.price += parseInt(priceSingle);
+  resultSum(appCategoryFunctions.basket.price);
+}
+function basketCountMinus(elementSumPrice, elementCountApp, priceSingle){
+  if(this.count>0){
+    this.count--;
+    elementSumPrice.innerText = this.count*priceSingle;
+    elementCountApp.innerText = this.count;
+    appCategoryFunctions.basket.price -= parseInt(priceSingle);
+    resultSum(appCategoryFunctions.basket.price);
+  }
+    
+
+}
+
+function resultSum(sum){
+  document.querySelector(".basket__to-order__dollars").innerText = sum;
   document.querySelector(".basket__to-order__cents").innerText = "00";
 }

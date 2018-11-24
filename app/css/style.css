@@ -572,27 +572,27 @@ input[type="checkbox"]:checked+.label::after{
 	border:solid 1px var(--color-grey);
 	border-radius:15px;
 	display: inline-block;
-	vertical-align: bottom;
-
+	vertical-align: middle;
 }
-
 .toggle-app__minus,
-.toggle-app__plus{
-	width:30%;
+.toggle-app__plus,
+.toggle-app__count{
+	width:35%;
 	display:inline-block;
 	color:var(--color-grey);
 	text-align: center;
 	height:100%;
-
-
+	line-height:30px;
+	margin-right:-4px;
 }
-.toggle-app__minus{
-	float:left;
+.toggle-app__count{
+	width:30%;
+	color:var(--color-secondary);
 }
-.toggle-app__plus{
-	float:right;
+.toggle-app__minus:hover,
+.toggle-app__plus:hover{
+	color:var(--color-secondary);
 }
-
 
 
 
@@ -1067,6 +1067,7 @@ input[type="checkbox"]:checked+.label::after{
 .basket__table__td_3{
 	width:20%;
 	text-align:center;
+	font-size:18px;
 }
 .basket__table__td_4{
 	width:10%;
@@ -1320,7 +1321,10 @@ padding:0 160px;
 .carousel__circle:hover,
 .app-pack:hover,
 .header__basket__svg,
-.header__basket__price
+.header__basket__price,
+.toggle-app__minus,
+.toggle-app__plus,
+.basket__table__td__rubish
 {
 		cursor:pointer;
 }
