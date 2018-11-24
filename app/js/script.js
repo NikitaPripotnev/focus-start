@@ -36,7 +36,7 @@ function addElements(list, i){
 
     a.appendChild(wrapper);
     item.appendChild(a);
-
+    item.className = "app-pack-wrapper"
     return item;
 };
 //
@@ -75,3 +75,26 @@ function renderCarousel(){
 }
 
 requestModule.downloadData("http://localhost:3000/API/packet-applications.json", renderCarousel);
+
+
+(function() {
+  
+  window.addEventListener("resize", resizeThrottler, false);
+
+  var resizeTimeout;
+  function resizeThrottler() {
+    if ( !resizeTimeout ) {
+      resizeTimeout = setTimeout(function() {
+        resizeTimeout = null;
+        actualResizeHandler();
+
+     }, 55);
+    }
+  }
+
+  function actualResizeHandler() {
+    // handle the resize event
+    carouselModule.resizeCarousel();
+  }
+
+}());

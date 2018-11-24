@@ -2,6 +2,8 @@ import * as requestModuleSync from "./sync.js";
 import * as appCategoryFunctions from "./application-category-functions.js";
 
 export function drawBasket(){
+  document.querySelector(".basket-wrapper").classList.remove("display-none")
+
   let template = document.getElementById("basket-box");
   let wrap = document.querySelector(".wrapper");
   wrap.appendChild(template.content.cloneNode(true));
@@ -9,8 +11,9 @@ export function drawBasket(){
   console.log(this.appData, "draw");
   this.appData.forEach(function(elem, index){
     let funcWrap = renderAppInBasket.bind(elem, index);
+    console.log("http://localhost:3000/API/application" + elem.id + ".json", "drawBasket");
     requestModuleSync.downloadDataSync("http://localhost:3000/API/application" + elem.id + ".json", funcWrap);
-    console.log(elem, "iter", index);
+
   });
 
 }
@@ -22,7 +25,7 @@ function renderAppInBasket(index){
   let clone = tr.content.cloneNode(true);
 
 
-  clone.querySelector(".basket__table__td__image").src = appParam.img_category;
+  clone.querySelector(".basket__table__td__image").src = appParam.img;
 
   clone.querySelector(".basket__table__td__h").innerText = appParam.title;
 
@@ -47,7 +50,7 @@ function renderAppInBasket(index){
   let rubish = clone.querySelector(".basket__table__td__rubish");
   let clickDelete = deleteAppBasket.bind(rubish,appCategoryFunctions.basket);
   rubish.onclick = clickDelete;
-  
+
   table.appendChild(clone);
   addIdElements();
   resultSum(appCategoryFunctions.basket.price);
@@ -91,7 +94,7 @@ function basketCountMinus(elementSumPrice, elementCountApp, priceSingle){
     appCategoryFunctions.basket.price -= parseInt(priceSingle);
     resultSum(appCategoryFunctions.basket.price);
   }
-    
+
 
 }
 

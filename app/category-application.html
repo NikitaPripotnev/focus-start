@@ -7,6 +7,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 </head>
 <body onload="">
+
 	<div class="wrapper">
 		<header class="header clearfix">
 			<div class="logo"></div>
@@ -55,7 +56,7 @@
 					<div class="content__top__header clearfix">
 				      <h4 class="h-level h-level-4 application__title"></h4>
         	</div>
-					<div class="application__content-top">
+					<div class="application__content-top clearfix">
 						<div class="application__info">
 		          <time class="app-pack__time application__time" datetime="2015-03-03"></time>
 		          <div class="application__info__about">
@@ -122,17 +123,18 @@
 					Подтверждение
 				</div>
 			</div>
-			<table class="basket__table">
-				<tr class="basket__table__tr">
-					<th class="basket__table__th">приложение</th>
-					<th class="basket__table__th">стоимость</th>
-					<th class="basket__table__th"></th>
-					<th class="basket__table__th">итог</th>
-					<th class="basket__table__th"></th>
-				</tr>
+			<div class="basket__table-wrapper">
+				<table class="basket__table">
+					<tr class="basket__table__tr">
+						<th class="basket__table__th">приложение</th>
+						<th class="basket__table__th">стоимость</th>
+						<th class="basket__table__th"></th>
+						<th class="basket__table__th">итог</th>
+						<th class="basket__table__th"></th>
+					</tr>
+				</table>
+			</div>
 
-
-			</table>
 			<div class="basket__to-order">
 				<span class="basket__to-order__dollars"></span>
 				<span class="basket__to-order__cents"></span>
@@ -174,6 +176,10 @@
 		</tr>
 	</template>
 
+
+	<div class="basket-wrapper display-none"></div>
+
+
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 		<symbol id="cft-basket" viewBox="0 0 32 32">
 			<g fill="none" fill-rule="evenodd"  stroke-linecap="round">
@@ -194,7 +200,7 @@
 			<defs>
 				<path id="a-rubish" d="M1 3h16v18H1z"/>
 				<mask id="b-rubish" width="16" height="18" x="0" y="0" fill="#fff">
-						<use xlink:href="#a"/>
+						<use xlink:href="#a-rubish"/>
 				</mask>
 			</defs>
 			<g fill="none" fill-rule="evenodd" stroke="#4990E2" transform="translate(7 6)">

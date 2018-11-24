@@ -5,7 +5,6 @@ let listApplication;
 let numApp=7;
 export let basket;
 let get = location.search;
-console.log(get, "start");
 if(get == '') get = "standart-pack.json"  ;
 else{
   get = get.replace("?", "");
@@ -38,7 +37,7 @@ function renderAppInfo(){
 
   wrap.querySelector(".application__requirement").innerText = listApplication.application__requirement;
 
-  wrap.querySelector(".application__info2__img").src = listApplication.img_category;
+  wrap.querySelector(".application__info2__img").src = listApplication.img;
 
   wrap.querySelector(".application__info2__price").innerText = listApplication.price;
 
@@ -76,6 +75,7 @@ export function clickSideBar(id){
 
 
 export function categoryOnLoad(){
+  addDeleteActiveLink(document.querySelectorAll(".catalog__nav__menu__item__link")[get]);
   requestModule.downloadData("http://localhost:3000/API/application" + get + ".json", renderApp);
   basket = new Basket(0);
 }

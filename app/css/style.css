@@ -32,8 +32,7 @@ html,body{
 }
 body{
 	position: relative;
-	min-width:1600px;
-	max-width:1600px;
+	min-width: 1440px;
 }
 .h-level{
 	font-weight: bold;
@@ -619,7 +618,8 @@ input[type="checkbox"]:checked+.label::after{
 
 .header,
 .content-wrapper{
-	padding:50px 240px 50px 160px;
+	/*padding:50px 240px 50px 160px;*/
+	padding:50px 15% 50px 8%;
 }
 .header{
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
@@ -666,7 +666,7 @@ input[type="checkbox"]:checked+.label::after{
 }
 .header__basket{
 	position:absolute;
-	left:1420px;
+	left:88%;
 	top:auto;
 }
 .header__basket__dollar{
@@ -711,10 +711,10 @@ input[type="checkbox"]:checked+.label::after{
 .content{
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.18);
 	background-color: #ffffff;
-	padding:25px 55px;
+	padding:5%;
 }
 .content__top{
-	margin-bottom:30px;
+	margin-bottom:50px;
 }
 .content__top__header__h{
 	float:left;
@@ -755,15 +755,15 @@ input[type="checkbox"]:checked+.label::after{
 }
 .app-pack{
 	display:inline-block;
-	margin-right:30px;
 	margin-bottom:30px;
+	margin-right:3vw;
 }
 .app-pack:nth-child(3n){
 	margin-right:0;
 }
 .app-pack__img{
-	width:330px;
-	height:198px;
+	width:20.7vw;
+	min-width:330px;
 	background-size:content;
 	margin-bottom:15px;
 	margin-top:5px;
@@ -798,9 +798,15 @@ input[type="checkbox"]:checked+.label::after{
 }
 .content__bottom__block{
 	display:inline-block;
-	width:485px;
-	margin-right:40px;
+	width:47%;
+
 	vertical-align: top;
+}
+.content__bottom__block_left{
+	float:left;
+}
+.content__bottom__block_right{
+	float:right;
 }
 .wrapper__header__h{
 	float:left;
@@ -846,8 +852,8 @@ input[type="checkbox"]:checked+.label::after{
 .catalog{
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 	padding:40px 25px;
-	margin-right:25px;
 	float:left;
+	width:27%;
 }
 .catalog__nav__menu,
 .catalog__nav__menu__item__link{
@@ -868,9 +874,9 @@ input[type="checkbox"]:checked+.label::after{
 	padding: 40px 30px;
 }
 .category-content{
-	float:left;
+	float:right;
 	padding:30px 0px;
-	max-width:815px;
+	width:71%;
 
 }
 .catalog__nav__menu__item{
@@ -938,8 +944,8 @@ input[type="checkbox"]:checked+.label::after{
 	margin-bottom:40px;
 }
 .application__info{
-	max-width:390px;
-	margin-right:50px;
+	width:55%;
+	float:left;
 }
 .application__info__about,
 .application__info__requirements
@@ -962,9 +968,20 @@ input[type="checkbox"]:checked+.label::after{
 }
 .application__info2{
 	text-align:center;
+	float:right;
+	width:35%;
 }
 .application__info2__img{
 	margin-bottom:20px;
+	width:100%;
+}
+.application__info2__price{
+	margin-right:10%;
+}
+.application__info2__dollar,
+.application__info2__price{
+	font-size:28px;
+	vertical-align:middle;
 }
 .application__functions__h{
 	font-size:22px;
@@ -989,24 +1006,34 @@ input[type="checkbox"]:checked+.label::after{
 
 .basket-wrapper{
 	 background-color: rgba(0, 0, 0, 0.8);
-	 position:absolute;
+	 position:fixed;
+	 z-index:1;
 	 width:100%;
 	 height:100%;
 	 top:0;
 	 left:0;
 }
 .basket{
-	padding:80px 80px 130px 80px;
-	position:absolute;
-	margin:50px auto;
-	left:40px;
-	top:40px;
+	padding:6%;
+	padding-bottom:10%;
+	position:fixed;
+	z-index:2;
+	width:80%;
+	height:80%;
+	top: 50%;
+	left: 50%;
+	margin-top:-20%;
+	margin-left:-40%;
 	background-color:#fff;
-	min-width: 1280px;
-	min-height:800px;
+	min-width: 900px;
+	min-height:600px;
 }
 .basket__stages{
 	margin-bottom:100px;
+}
+.basket__table-wrapper{
+	overflow: auto;
+	height:70%;
 }
 .basket__table{
 	border-collapse: collapse;
@@ -1243,8 +1270,8 @@ padding:0 160px;
 
 .content__top__galery-overflow{
 	overflow: hidden;
-	height:270px;
-	width:1060px;
+	height:100%;
+	width:100%;
 	display:inline-block;
 	text-align: center;
 	margin-bottom:10px;
@@ -1282,20 +1309,15 @@ padding:0 160px;
 
 }
 
-.application__info2__price{
-	margin-right:20px;
+
+
+
+
+
+
+.display-none{
+	display:none;
 }
-.application__info2__dollar,
-.application__info2__price{
-	font-size:28px;
-	vertical-align:middle;
-}
-
-
-
-
-
-
 .link_active{
 	color: var(--color-red);
 }
