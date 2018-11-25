@@ -20,7 +20,7 @@
 			<div class="header__basket">
 				<div class="header__basket-without-close">
 					<svg class ="header__basket__svg header__basket__svg-basket"><use xlink:href="#cft-basket"></use></svg>
-					<span class="header__basket__price">234</span><span class="header__basket__dollar">$</span>
+					<span class="header__basket__price"></span><span class="header__basket__dollar">$</span>
 				</div>
 				<svg class ="header__basket__svg header__basket__svg-close" style="display: none;"><use xlink:href="#cft-close"></use></svg>
 			</div>
@@ -98,6 +98,219 @@
 			</div>
 		</div>
 	</div>
+
+	<template id="basket-box">
+		<div class="basket">
+			<div class="basket__stages">
+				<div class="step step-1">
+					Список приложений
+				</div>
+				<div class="step step-2 disabled">
+					Оплата
+				</div>
+				<div class="step step-3 disabled">
+					Контактная информация
+				</div>
+				<div class="step step-4 disabled">
+					Подтверждение
+				</div>
+			</div>
+		</div>
+	</template>
+
+
+	<template id="basket-step0">
+
+		<div class="step1-application">
+			<div class="basket__table-wrapper">
+				<table class="basket__table">
+					<tr class="basket__table__tr">
+						<th class="basket__table__th">приложение</th>
+						<th class="basket__table__th">стоимость</th>
+						<th class="basket__table__th"></th>
+						<th class="basket__table__th">итог</th>
+						<th class="basket__table__th"></th>
+					</tr>
+				</table>
+			</div>
+
+			<div class="basket__to-order">
+				<span class="basket__to-order__dollars"></span>
+				<span class="basket__to-order__cents"></span>
+				<button class="button button_primary button-step1" type="button">ДАЛЕЕ</button>
+			</div>
+		</div>
+
+	</template>
+
+	<template id="table-row">
+		<tr class="basket__table__tr basket__table__tr-data">
+			<td class="basket__table__td basket__table__td_1">
+					<div class="basket__table__td__img">
+						<img class="basket__table__td__image" src="" alt="">
+					</div>
+					<div class="basket__table__td__label">
+						<h5 class="basket__table__td__h h-level-5"></h5>
+						<div class="box">
+							<input class="basket__table__checkbox" type="checkbox">
+							<label class="label basket__table__checkbox-label">установка и настройка</label>
+						</div>
+					</div>
+			</td>
+			<td class="basket__table__td basket__table__td_2">
+				<span class="table__price"></span>
+			</td>
+			<td class="basket__table__td basket__table__td_3">
+				<div class="toggle-app clearfix">
+					<div class="toggle-app__minus">-</div>
+					<div class="toggle-app__count">0</div>
+					<div class="toggle-app__plus">+</div>
+				</div>
+			</td>
+			<td class="basket__table__td basket__table__td_4">
+				<span class="table__sum-price"></span>
+			</td>
+			<td class="basket__table__td basket__table__td_5">
+				<svg class ="basket__table__td__rubish"><use xlink:href="#cft-rubish-bin"></use></svg>
+			</td>
+		</tr>
+	</template>
+
+	<template id="basket-step1">
+
+		<div class="step-2__cards">
+			<div class="step-2__cards-wrapper">
+				<div class="card card-after">
+					<div class="card-after__form-top">
+						<form action="#" class="form" name="cards">
+								<div class="">
+									<input class="input input-required input-number-card" type="text" name="number-card" placeholder="Номер карты" required pattern="[1-9]">
+								</div>
+
+								<div class="clearfix">
+									<input class="input input-year-month input-year-month_left" type="text" name="month" placeholder="Месяц" required pattern="">
+									<input class="input input-year-month input-year-month_right" type="text" name="year" placeholder="Год" required pattern="">
+								</div>
+						</form>
+					</div>
+
+					<div class="card-after__icons">
+						<div class="master-card"></div>
+						<div class="visa"></div>
+					</div>
+
+					<div class="card-after__form-bottom">
+						<form class="" action="index.html" method="post" name="cards">
+							<input class="input input-required" type="text" name="number-card-holder" placeholder="Фамилия Имя владельца карты" required pattern="[A-Za-z]">
+						</form>
+					</div>
+				</div>
+
+				<div class="card card-before clearfix">
+					<div class="card-before__line"></div>
+
+					<div class="card-before__cvv">
+							<input class="input input-required input-cvv" type="text" name="number-cvv" placeholder="CVV" required pattern="[0-9]{3}">
+							<p class="card-before__cvv__info">Три цифры на обратной стороне</p>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="step-2__button-group clearfix">
+				<button class="button button_secondary button-left step-2__buttons" type="button">НАЗАД</button>
+				<button class="button button_primary button-right step-2__buttons button-step2" type="submit">ОПЛАТИТЬ</button>
+			</div>
+			<script src="js/basket-draw-step2.js" type="module"></script>
+
+		</div>
+
+	</template>
+
+	<template id="basket-step2">
+
+		<div class="step-3__contact-info-wrapper clearfix">
+			<div class="step-3__contact-info">
+				<h5 class="step-3__contact-info__h">Контактная информация</h5>
+
+				<div class="step-3__form">
+					<form action="#" class="form" name="contact-info">
+						<div class="step-3__form_2x">
+							<input class="input input-2x" type="text" name="surname" placeholder="Фамилия">
+							<input class="input input-2x" type="text" name="name" placeholder="Имя Отчество">
+						</div>
+
+						<div class="step-3__form_2x">
+							<input class="input input-2x" type="telephone" name="telephone" placeholder="Номер телефона">
+							<input class="input input-2x" type="email" name="email" placeholder="E-mail">
+						</div>
+
+						<div class="step-3__form_3x">
+							<input class="input input-3x" type="text" name="organization" placeholder="Организация">
+							<input class="input input-3x" type="text" name="INN" placeholder="ИНН">
+							<input class="input input-3x" type="text" name="city" placeholder="Город">
+						</div>
+					</form>
+				</div>
+				<div class="step-3__toggles">
+					<form class="step-3__radio-buttons" action="#" method="post" name="contact-info">
+						<div class="box step-3__radio">
+							<input type="radio" name="install" id="quick-install">
+							<label class="label" for="quick-install">Быстрая установка</label>
+						</div>
+
+						<div class="box step-3__radio">
+							<input type="radio" name="install" id="def-install">
+							<label class="label" for="def-install">Отложенная установка</label>
+						</div>
+					</form>
+
+					<div class="toggle-wrapper">
+						<div class="toggle toggle__off"></div>
+						<span class="toggle-span">Требуется консультация</span>
+					</div>
+					<form class="" action="#" method="" name="contact-info">
+						<button class="button button_primary button-step3" type="button">Подтвердить</button>
+					</form>
+
+				</div>
+			</div>
+
+		</div>
+		<script src="js/basket-draw-step3.js" type="module"></script>
+
+	</template>
+
+	<template id="basket-step3">
+		<div class="step-4__success-wrapper">
+			<div class="step-4__success">
+
+				<div class="modal step-4__modal">
+					<div class="modal__oval"></div>
+					<p class="modal__info">Поздравляем! Ваш заказ успешно оформлен!</p>
+				</div>
+				<div class="step-4__information">
+					<p class="step-4__information__p">
+						В ближайшее время с Вами свяжется наш менеджер<br>
+						для уточнения параметров заказа<br>
+						и решения вопроса о встрече со специалистами.
+					</p>
+				</div>
+
+				<div class="">
+					<button class="button button_secondary button-step4" type="button" >На главную</button>
+				</div>
+
+			</div>
+			<script src="js/basket-draw-step4.js" type="module"></script>
+		</div>
+
+	</template>
+
+
+	<div class="basket-wrapper display-none"></div>
+
+	
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 		<symbol id="cft-arrow-right" viewBox="0 0 32 32">
 			<g fill="none" fill-rule="evenodd"  stroke-linecap="round" stroke-linejoin="round" stroke-width="2">

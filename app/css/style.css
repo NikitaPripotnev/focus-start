@@ -137,13 +137,13 @@ body{
 
 
 .step{
-	padding-left:45px;
+	padding-left:4%;
 	position:relative;
 	line-height:30px;
 	font-size:14px;
 	display:inline-block;
 	text-transform:uppercase;
-	margin-right:100px;
+	margin-right:8%;
 }
 .step:last-child{
 	margin-right:0;
@@ -165,13 +165,13 @@ body{
 	left:0;
 	top:0;
 	font-weight:bold;
+	color:var(--color-white);
 }
 .step-1::after,
 .step-2::after,
 .step-3::after,
 .step-4::after{
-	color:var(--color-white);
-	left:10px;
+
 }
 .step-1::after{
 	content:"1";
@@ -280,6 +280,7 @@ input[type="radio"]:checked+.label
 .label{
 	padding-left:30px;
 	position:relative;
+	-webkit-user-select: none;
 }
 .label::before
 {
@@ -332,6 +333,8 @@ input[type="checkbox"]:checked+.label::after{
 	margin-right:15px;
 	display:inline-block;
 	vertical-align: middle;
+	-webkit-user-select: none;
+	transition: all 1s ease;
 }
 .toggle__off{
 	background-color:var(--color-secondary);
@@ -348,6 +351,7 @@ input[type="checkbox"]:checked+.label::after{
 	position:absolute;
 	top:4px;
 	content:"";
+	transition: all 0.5s ease;
 }
 .toggle__off::before,
 .toggle__on::before{
@@ -371,7 +375,7 @@ input[type="checkbox"]:checked+.label::after{
 
 .modal{
 	padding:40px 80px 45px 80px;
-	max-width: 600px;
+	width: 600px;
 	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.11);
 	background-color: #f9f4f4;
 	border-bottom: solid 2px var(--color-primary);
@@ -583,6 +587,7 @@ input[type="checkbox"]:checked+.label::after{
 	height:100%;
 	line-height:30px;
 	margin-right:-4px;
+	-webkit-user-select: none;
 }
 .toggle-app__count{
 	width:30%;
@@ -592,6 +597,16 @@ input[type="checkbox"]:checked+.label::after{
 .toggle-app__plus:hover{
 	color:var(--color-secondary);
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1014,26 +1029,30 @@ input[type="checkbox"]:checked+.label::after{
 	 left:0;
 }
 .basket{
-	padding:6%;
-	padding-bottom:10%;
+	padding:5%;
 	position:fixed;
 	z-index:2;
 	width:80%;
-	height:80%;
+	height:85%;
 	top: 50%;
 	left: 50%;
-	margin-top:-20%;
-	margin-left:-40%;
+	margin-top:-42.5vh;
+	margin-left:-40vw;
 	background-color:#fff;
-	min-width: 900px;
+	min-width: 1070px;
 	min-height:600px;
 }
 .basket__stages{
-	margin-bottom:100px;
+	margin-bottom:8%;
+	text-align:center;
+}
+.step1-application{
+	height:75%;
 }
 .basket__table-wrapper{
 	overflow: auto;
-	height:70%;
+	height:75%;
+	margin-bottom: 8%;
 }
 .basket__table{
 	border-collapse: collapse;
@@ -1106,7 +1125,6 @@ input[type="checkbox"]:checked+.label::after{
 }
 
 .basket__to-order{
-	padding:70px 110px;
 	text-align:right;
 }
 .basket__to-order__dollars{
@@ -1116,7 +1134,7 @@ input[type="checkbox"]:checked+.label::after{
 	color:var(--color-grey);
 	font-size:20px;
 	vertical-align: top;
-	margin-right:100px;
+	margin-right:6%;
 }
 .step-2__cards{
 padding:0 160px;
@@ -1205,36 +1223,42 @@ padding:0 160px;
 	font-size:12px;
 }
 .step-3__contact-info{
-	padding:0 80px;
-	margin-top: 140px;
+
 }
 .step-3__form{
 	display:inline-block;
-	margin-right:80px;
+	width:65%;
+	margin-right:7%;
 	vertical-align: top;
 }
 .step-3__form_2x{
 	margin-bottom:20px;
+	width:100%;
 }
 .input-2x{
-	width:312px;
-	margin-right:20px;
+	width:47.5%;
+	margin-right:4%;
 }
 .input-2x:last-child,
 .input-3x:last-child{
 	margin-right:0;
 }
 .input-3x{
-	width:200px;
-	margin-right:20px;
+	width:31%;
+	margin-right:2.5%;
+}
+.step-3__contact-info-wrapper{
+	margin:0 auto;
+	width:90%
 }
 .step-3__contact-info__h{
 	font-size:20px;
 	text-transform: uppercase;
-	margin-bottom:25px;
+	margin-bottom:5%;
 }
 .step-3__toggles{
 	display:inline-block;
+	float:right;
 }
 .step-3__radio-buttons{
 	margin-bottom:40px;
@@ -1249,17 +1273,19 @@ padding:0 160px;
 .toggle-wrapper{
 	margin-bottom:120px;
 }
-
+.step-4__success-wrapper{
+	width:100%;
+}
 .step-4__success{
-	display: inline-block;
 	text-align: center;
+	margin:0 auto;
 }
 .step-4__modal{
 
 }
-.step-4__information{
-	max-width:390px;
-	margin:30px 0 90px 0;
+.step-4__information__p{
+	width:390px;
+	margin:5% auto;
 	text-align: center;
 	font-size:15px;
 	color: var(--color-light-grey);

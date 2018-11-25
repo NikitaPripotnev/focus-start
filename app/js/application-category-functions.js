@@ -1,9 +1,10 @@
 import * as requestModule from "./application-download.js";
-import {Basket} from "./basket.js";
+
+import {createBasket, initialSmallBasket} from "./basket-functions.js";
 
 let listApplication;
 let numApp=7;
-export let basket;
+let basket;
 let get = location.search;
 if(get == '') get = "standart-pack.json"  ;
 else{
@@ -72,17 +73,22 @@ export function clickSideBar(id){
   }
 }
 
-
+function initialLinks(){
+  let linksSideBar = document.querySelectorAll(".catalog__nav__menu__item__link");
+  linksSideBar.forEach(function(element, id){
+    var funcWrap = clickSideBar.bind(element, id);
+    element.onclick = funcWrap;
+  });
+}
 
 export function categoryOnLoad(){
+  basket = createBasket();
   addDeleteActiveLink(document.querySelectorAll(".catalog__nav__menu__item__link")[get]);
   requestModule.downloadData("http://localhost:3000/API/application" + get + ".json", renderApp);
-  basket = new Basket(0);
+  initialLinks();
+  initialSmallBasket(basket);
 }
 
 function clickButtonBasket(){
   basket.addApp(parseInt(listApplication.price), listApplication.id);
-}
-export function clickClose(){
-  basket.clear();
 }

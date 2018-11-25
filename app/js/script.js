@@ -1,7 +1,10 @@
 import * as carouselModule from "./carousel.js";
 import * as requestModule from "./application-download.js";
+import {createBasket, initialSmallBasket} from "./basket-functions.js";
 //var list =  module.downloadInfoApplication("http://localhost:3000/API/packet-applications.json");
 let listApplication;
+let basket;
+
 
 function getLengthList(){
   return listApplication.length;
@@ -74,11 +77,16 @@ function renderCarousel(){
   document.querySelector(".content__top").appendChild(carouselAddElements());
 }
 
-requestModule.downloadData("http://localhost:3000/API/packet-applications.json", renderCarousel);
 
+function startPage(){
+  basket = createBasket();
+  requestModule.downloadData("http://localhost:3000/API/packet-applications.json", renderCarousel);
 
-(function() {
-  
+  initialSmallBasket(basket);
+}
+
+function resizeCarousel() {
+
   window.addEventListener("resize", resizeThrottler, false);
 
   var resizeTimeout;
@@ -97,4 +105,7 @@ requestModule.downloadData("http://localhost:3000/API/packet-applications.json",
     carouselModule.resizeCarousel();
   }
 
-}());
+};
+
+document.addEventListener("DOMContentLoaded", startPage);
+document.addEventListener("DOMContentLoaded", resizeCarousel);
