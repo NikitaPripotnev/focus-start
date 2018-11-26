@@ -1,5 +1,6 @@
 import {Basket} from "./basket.js";
-import {drawBasket} from "./basket-draw.js";
+import {drawBasket, drawElementsForBasket} from "./basket-draw.js";
+import {drawBasket, drawElementsForBasket} from "./basket-draw-other.js";
 
 
 let basketPrice = document.querySelector(".header__basket__price");

@@ -5,6 +5,8 @@ import {setItemsLocalStorage, showDataSmallBasket} from "./basket-functions.js";
 let basketBox;
 export let circlesStep;
 
+
+/*
 export function drawBasket(){
 
   let basket = this;
@@ -38,11 +40,120 @@ export function drawBasket(){
 
   blackBox.onclick = closeBasket;
 
-  addEventForButtons(circlesStep[1], ".button-step1", ".step1-application");
+  let elemRemove = basketBox.querySelector(".step1-application");
+  addEventForButtons(circlesStep[1], ".button-step1");
+
+  })
+
+}
+*/
+function addActiveStep(){
+  let stepCircles = document.querySelectorAll(".step");
+  let numberCircle = this.dataset.id;
+  let lengthCircles = stepCircles.length;
+
+  stepCircles.forEach(function(element, id){
+    if(id<=numberCircle){
+      element.classList.remove("disabled");
+      if(id==(lengthCircles-1)){
+        element.classList.add("step-success");
+      }
+    }
+    else{
+      element.classList.add("disabled");
+    }
+  });
+}
+
+function drawSteps(elemRemove){
+
+  let basket = document.querySelector(".basket");
+  let basketStep = document.getElementById("basket-step"+this.dataset.id);
+
+  basket.removeChild(elemRemove);
+  return basket.appendChild(basketStep.content.cloneNode(true));
+}
+
+function addEventForButtons(circlesStepNumberStep, button, elemRemove){
+  let changeStep = addActiveStep.bind(circlesStepNumberStep);
+  button.addEventListener("click", changeStep);
+
+  let wrapDrawStep = drawSteps.bind(circlesStepNumberStep, elemRemove);
+  button.addEventListener("click", wrapDrawStep);
 
 }
 
 
+function drawElementsForBasket(){
+
+    this.appData.forEach(function(elem, index){
+    requestModule.downloadData("http://localhost:3000/API/application" + elem.id + ".json").then(function(listApplication){
+      let funcWrap = renderAppInBasket.bind(elem, index, listApplication, basket);
+      funcWrap();
+    });
+
+  });
+
+  circlesStep = document.querySelectorAll(".step");
+  circlesStep.forEach(function(element, id){
+    element.dataset.id = id;
+  });
+
+}
+
+
+function drawbasket(){
+  return new Promise(function(resolved, rejected) {
+    let basket = this;
+    let blackBox = document.querySelector(".basket-wrapper");
+    blackBox.onclick = closeBasket;
+
+    blackBox.classList.remove("display-none");
+
+    let templateBasketBox = document.getElementById("basket-box");
+    let basketStep1 = document.getElementById("basket-step0");
+    let wrap = document.querySelector(".wrapper");
+
+    wrap.appendChild(templateBasketBox.content.cloneNode(true));
+    basketBox = wrap.querySelector(".basket");
+
+
+    if(basketStep1){
+
+      resolved(basketBox.appendChild( basketStep1.content.cloneNode(true) ));
+    }
+    else{
+      rejected(new Error("draw basket failed :( "));
+    }
+
+  });
+}
+
+
+function clickOnBasket(){
+  let basket = this;
+  drawbasket()
+  .then(function(basketStep0){
+
+    let wrapDrawElementsForBasket = drawElementsForBasket.bind(basket);
+    wrapDrawElementsForBasket();
+
+    let button = basketStep0.querySelector(".button-step1");
+    addEventForButtons(circlesStep[1], button, basketStep0);
+
+    return button;
+
+  })
+  .then(function(button){
+
+    let elemRemove = document.querySelector(".step-2__cards");
+    addEventForButtons(circlesStep[2], button, elemRemove);
+
+    return button;
+
+  })
+
+}
 
 function renderAppInBasket(index, appParam, basket){
 

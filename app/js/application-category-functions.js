@@ -70,7 +70,8 @@ export function clickSideBar(id){
     alert("Извините, данное приложение временно отсутствует");
   }
   else{
-    requestModule.downloadData("http://localhost:3000/API/application" + id + ".json").then(function(listApplication){
+    requestModule.downloadData("http://localhost:3000/API/application" + id + ".json")
+    .then(function(listApplication){
       let funcWrap = sideBarFunc.bind(link, listApplication);
       funcWrap();
     });
