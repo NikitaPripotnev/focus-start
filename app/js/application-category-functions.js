@@ -17,9 +17,8 @@ function addDeleteActiveLink(link){
   link.classList.add("link_active");
 }
 
-function renderAppInfo(){
-  listApplication = requestModule.list;
-  console.log(listApplication,"from renerAppInfo");
+function renderAppInfo(listApplication){
+
   let wrap = document.querySelector(".category-content");
 
   wrap.querySelector(".application__title").innerText = listApplication.title;
@@ -47,29 +46,33 @@ function renderAppInfo(){
 }
 
 
-function renderApp(){
+function renderApp(listApplication){
 
   let template = document.querySelector(".application");
   let wrap = document.querySelector(".category-content");
 
   wrap.appendChild(template.content.cloneNode(true));
-  renderAppInfo();
+  renderAppInfo(listApplication);
 }
 
-function sideBarFunc(){
+function sideBarFunc(listApplication){
 
   addDeleteActiveLink(this);
-  renderAppInfo();
+  renderAppInfo(listApplication);
 }
 
 export function clickSideBar(id){
-  console.log(this, id, "clickSideBar")
+
+  let link = this;
+
   if(id>=numApp){
     alert("Извините, данное приложение временно отсутствует");
   }
   else{
-    let funcWrap = sideBarFunc.bind(this);
-    requestModule.downloadData("http://localhost:3000/API/application" + id + ".json", funcWrap );
+    requestModule.downloadData("http://localhost:3000/API/application" + id + ".json").then(function(listApplication){
+      let funcWrap = sideBarFunc.bind(link, listApplication);
+      funcWrap();
+    });
   }
 }
 
@@ -84,7 +87,10 @@ function initialLinks(){
 export function categoryOnLoad(){
   basket = createBasket();
   addDeleteActiveLink(document.querySelectorAll(".catalog__nav__menu__item__link")[get]);
-  requestModule.downloadData("http://localhost:3000/API/application" + get + ".json", renderApp);
+  requestModule.downloadData("http://localhost:3000/API/application" + get + ".json").then(function(list){
+    let listApplication = list;
+    renderApp(listApplication)
+  });
   initialLinks();
   initialSmallBasket(basket);
 }

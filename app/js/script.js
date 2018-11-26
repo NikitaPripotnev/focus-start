@@ -66,8 +66,7 @@ document.querySelector(".slider__arrow_left").onclick = carouselModule.sliderLef
 document.querySelector(".slider__arrow_right").onclick = carouselModule.sliderRightArrow;
 
 //Рендер приложений для карусели
-function renderCarousel(){
-  listApplication = requestModule.list;
+function renderCarousel(listApplication){
   let  carousel = carouselModule.carousel;
   carousel.appendChild(addElements(listApplication, listApplication.length-1));
   for(let i=0;i<7;i++){
@@ -80,7 +79,9 @@ function renderCarousel(){
 
 function startPage(){
   basket = createBasket();
-  requestModule.downloadData("http://localhost:3000/API/packet-applications.json", renderCarousel);
+  requestModule.downloadData("http://localhost:3000/API/packet-applications.json").then(function(listApplication){
+    renderCarousel(listApplication);
+  });
 
   initialSmallBasket(basket);
 }
