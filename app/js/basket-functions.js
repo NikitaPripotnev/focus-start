@@ -1,6 +1,11 @@
 import {Basket} from "./basket.js";
 import {drawBasket} from "./basket-draw.js";
 
+
+let basketPrice = document.querySelector(".header__basket__price");
+let basketClose = document.querySelector(".header__basket__svg-close");
+
+
 export function createBasket(){
 
   let basket = new Basket(0, 0);
@@ -39,6 +44,11 @@ function basketUnFocus(){
   document.querySelector(".header__basket__dollar").style.color = colorLightGrey;
 }
 
+function clearBasket(){
+  this.clear();
+  showDataSmallBasket(this)
+}
+
 export function initialSmallBasket(basket){
 
   showDataSmallBasket(basket);
@@ -49,11 +59,19 @@ export function initialSmallBasket(basket){
   let funcClickBasket = drawBasket.bind(basket);
   basketWithoutClose.onclick = funcClickBasket;
 
-  document.querySelector(".header__basket__svg-close").onclick = basket.clear;
+  let funcClickClose = clearBasket.bind(basket);
+  document.querySelector(".header__basket__svg-close").onclick = funcClickClose;
 
 }
 
 export function showDataSmallBasket(basket){
-  document.querySelector(".header__basket__price").innerText=basket.price;
-  //document.querySelector(".header__basket__count").innerText=basket.price;
+  basketPrice.innerText=basket.price;
+  //basketCount.innerText=basket.count;
+  if(basket.price!=0&&basketClose.classList.contains("display-none")){
+    basketClose.classList.remove("display-none");
+  }
+  else if(basket.price==0&&(!basketClose.classList.contains("display-none"))){
+    basketClose.classList.add("display-none");
+  }
+
 }

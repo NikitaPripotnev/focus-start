@@ -16,6 +16,7 @@ function addActiveStep(){
     }
   });
 }
+
 function closeBasket(){
 
   document.querySelector(".basket-wrapper").classList.add("display-none");

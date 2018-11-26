@@ -1,6 +1,6 @@
 import * as requestModule from "./application-download.js";
 
-import {createBasket, initialSmallBasket} from "./basket-functions.js";
+import {createBasket, initialSmallBasket, setItemsLocalStorage, showDataSmallBasket} from "./basket-functions.js";
 
 let listApplication;
 let numApp=7;
@@ -65,7 +65,7 @@ function sideBarFunc(){
 export function clickSideBar(id){
   console.log(this, id, "clickSideBar")
   if(id>=numApp){
-    alert("Извините, данное приложение временно отсутствует")
+    alert("Извините, данное приложение временно отсутствует");
   }
   else{
     let funcWrap = sideBarFunc.bind(this);
@@ -91,4 +91,6 @@ export function categoryOnLoad(){
 
 function clickButtonBasket(){
   basket.addApp(parseInt(listApplication.price), listApplication.id);
+  setItemsLocalStorage(basket.price, basket.count, basket.appData);
+  showDataSmallBasket(basket);
 }

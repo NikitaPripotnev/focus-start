@@ -1,7 +1,5 @@
 import {setItemsLocalStorage} from "./basket-functions.js";
 
-let basketPrice = document.querySelector(".header__basket__price");
-let basketClose = document.querySelector(".header__basket__svg-close");
 
 export class Basket  {
   constructor(price, count) {
@@ -9,8 +7,6 @@ export class Basket  {
     this.count = count;
     this.appData = [];
 
-    //перенести за класс
-    basketPrice.innerText=this.price;
   }
   addApp(price, id){
     this.price = price+this.price;
@@ -24,14 +20,7 @@ export class Basket  {
     else{
       this.appData.push({id: id, count: 1});
     }
-    setItemsLocalStorage(this.price, this.count, this.appData);
 
-
-    //перенести за класс
-    basketPrice.innerText=this.price;
-    if(basketClose.style.display=="none"){
-      basketClose.style.display = "inline-block";
-    }
   }
   clear(){
     this.price = 0;
@@ -39,9 +28,6 @@ export class Basket  {
     this.appData = [];
     localStorage.clear();
 
-    //перенести за класс
-    basketPrice.innerText=this.price;
-    basketClose.style.display = "none";
   }
 
 };
