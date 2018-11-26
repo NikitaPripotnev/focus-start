@@ -1,4 +1,4 @@
-import * as requestModuleSync from "./sync.js";
+import * as requestModule from "./application-download.js";
 import {addEventForButtons,closeBasket} from "./basket-draw-other.js";
 import {setItemsLocalStorage, showDataSmallBasket} from "./basket-functions.js";
 
@@ -22,9 +22,11 @@ export function drawBasket(){
 
 
   this.appData.forEach(function(elem, index){
-    let funcWrap = renderAppInBasket.bind(elem, index, basket);
-    console.log("http://localhost:3000/API/application" + elem.id + ".json", "drawBasket");
-    requestModuleSync.downloadDataSync("http://localhost:3000/API/application" + elem.id + ".json", funcWrap);
+
+    requestModule.downloadData("http://localhost:3000/API/application" + elem.id + ".json").then(function(listApplication){
+      let funcWrap = renderAppInBasket.bind(elem, index, listApplication, basket);
+      funcWrap();
+    });
 
   });
 
@@ -42,9 +44,8 @@ export function drawBasket(){
 
 
 
-function renderAppInBasket(index, basket){
+function renderAppInBasket(index, appParam, basket){
 
-  let appParam = requestModuleSync.list;
   let table = document.querySelector(".basket__table");
   let tr = document.getElementById("table-row");
   let clone = tr.content.cloneNode(true);

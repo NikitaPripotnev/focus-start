@@ -41,7 +41,8 @@ function renderAppInfo(listApplication){
 
   wrap.querySelector(".application__info2__price").innerText = listApplication.price;
 
-  wrap.querySelector(".button_basket").onclick = clickButtonBasket;
+  let funcClickButtonBasket = clickButtonBasket.bind(this, listApplication);
+  wrap.querySelector(".button_basket").onclick = funcClickButtonBasket;
 
 }
 
@@ -95,7 +96,7 @@ export function categoryOnLoad(){
   initialSmallBasket(basket);
 }
 
-function clickButtonBasket(){
+function clickButtonBasket(listApplication){
   basket.addApp(parseInt(listApplication.price), listApplication.id);
   setItemsLocalStorage(basket.price, basket.count, basket.appData);
   showDataSmallBasket(basket);
