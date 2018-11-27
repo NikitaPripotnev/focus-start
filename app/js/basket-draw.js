@@ -1,30 +1,16 @@
 import * as requestModule from "./application-download.js";
-import {addEventForButtons,closeBasket} from "./basket-draw-other.js";
+import {addEventForButtons,closeBasket, addActiveStep, drawSteps, clickToggle} from "./basket-draw-other.js";
 import {setItemsLocalStorage, showDataSmallBasket} from "./basket-functions.js";
+import {basket as basketFromFunc} from "./basket-functions.js";
 
 let basketBox;
 export let circlesStep;
 
 
-/*
-export function drawBasket(){
 
-  let basket = this;
-  let blackBox = document.querySelector(".basket-wrapper");
+function addElementsForStep1(basket){
 
-  blackBox.classList.remove("display-none");
-
-  let templateBasketBox = document.getElementById("basket-box");
-  let basketStep1 = document.getElementById("basket-step0");
-  let wrap = document.querySelector(".wrapper");
-
-  wrap.appendChild(templateBasketBox.content.cloneNode(true));
-  basketBox = wrap.querySelector(".basket");
-  basketBox.appendChild(basketStep1.content.cloneNode(true));
-
-
-  this.appData.forEach(function(elem, index){
-
+  basket.appData.forEach(function(elem, index){
     requestModule.downloadData("http://localhost:3000/API/application" + elem.id + ".json").then(function(listApplication){
       let funcWrap = renderAppInBasket.bind(elem, index, listApplication, basket);
       funcWrap();
@@ -32,126 +18,283 @@ export function drawBasket(){
 
   });
 
-  circlesStep = document.querySelectorAll(".step");
-  circlesStep.forEach(function(element, id){
-    element.dataset.id = id;
-  });
-
-
-  blackBox.onclick = closeBasket;
-
-  let elemRemove = basketBox.querySelector(".step1-application");
-  addEventForButtons(circlesStep[1], ".button-step1");
-
-  })
-
-}
-*/
-function addActiveStep(){
-  let stepCircles = document.querySelectorAll(".step");
-  let numberCircle = this.dataset.id;
-  let lengthCircles = stepCircles.length;
-
-  stepCircles.forEach(function(element, id){
-    if(id<=numberCircle){
-      element.classList.remove("disabled");
-      if(id==(lengthCircles-1)){
-        element.classList.add("step-success");
-      }
-    }
-    else{
-      element.classList.add("disabled");
-    }
-  });
+  let button = basketBox.querySelector(".button-step1");
+  button.addEventListener("click", functionForButton1);
 }
 
-function drawSteps(elemRemove){
-
-  let basket = document.querySelector(".basket");
-  let basketStep = document.getElementById("basket-step"+this.dataset.id);
-
-  basket.removeChild(elemRemove);
-  return basket.appendChild(basketStep.content.cloneNode(true));
-}
-
-function addEventForButtons(circlesStepNumberStep, button, elemRemove){
-  let changeStep = addActiveStep.bind(circlesStepNumberStep);
-  button.addEventListener("click", changeStep);
-
-  let wrapDrawStep = drawSteps.bind(circlesStepNumberStep, elemRemove);
-  button.addEventListener("click", wrapDrawStep);
-
-}
-
-
-function drawElementsForBasket(){
-
-    this.appData.forEach(function(elem, index){
-    requestModule.downloadData("http://localhost:3000/API/application" + elem.id + ".json").then(function(listApplication){
-      let funcWrap = renderAppInBasket.bind(elem, index, listApplication, basket);
-      funcWrap();
-    });
-
-  });
-
-  circlesStep = document.querySelectorAll(".step");
-  circlesStep.forEach(function(element, id){
-    element.dataset.id = id;
-  });
-
-}
-
-
-function drawbasket(){
-  return new Promise(function(resolved, rejected) {
-    let basket = this;
+export function drawBasket(basket){
+  if(basket.price!=0){
     let blackBox = document.querySelector(".basket-wrapper");
-    blackBox.onclick = closeBasket;
-
     blackBox.classList.remove("display-none");
+    blackBox.addEventListener("click", closeBasket);
 
-    let templateBasketBox = document.getElementById("basket-box");
-    let basketStep1 = document.getElementById("basket-step0");
     let wrap = document.querySelector(".wrapper");
-
+    let templateBasketBox = document.getElementById("basket-box");
     wrap.appendChild(templateBasketBox.content.cloneNode(true));
+    let basketStep1 = document.getElementById("basket-step0");
+
     basketBox = wrap.querySelector(".basket");
+    basketBox.appendChild(basketStep1.content.cloneNode(true));
+    circlesStep = document.querySelectorAll(".step");
+    circlesStep.forEach(function(element, id){
+      element.dataset.id = id;
+    });
+    addElementsForStep1(basket);
+    circlesStep[0].addEventListener("click", functionForButton2Back);
+    circlesStep[1].addEventListener("click", functionForButton1);
+    circlesStep[2].addEventListener("click", functionForButton2);
 
+  }
+  else{
+    alert("Добавьте что-нибудь в корзину для покупки!")
+  }
 
-    if(basketStep1){
+}
 
-      resolved(basketBox.appendChild( basketStep1.content.cloneNode(true) ));
+function functionForButton1(){
+  let promise1 = new Promise(  function(resolve, reject) {
+
+    let changeStep = addActiveStep.bind(circlesStep[1]);
+    changeStep();
+
+    let draw = drawSteps.bind(circlesStep[1]);
+    draw();
+    setInfoCards();
+    let step2template = document.querySelector(".step-2__cards");
+    if(step2template){
+      resolve(".button-step2");
     }
     else{
-      rejected(new Error("draw basket failed :( "));
+      reject(console.log(" button1 failed =(( "))
     }
+      });
 
-  });
+    promise1.then(function(buttonClass){
+
+      let button = document.querySelector(buttonClass);
+      button.addEventListener("click", functionForButton2);
+      let buttonBack = document.querySelector(".button-step2_back");
+      console.log(document.querySelector(".button-step2_back"), "check in checkafsdf")
+      buttonBack.addEventListener("click", functionForButton2Back);
+    }).catch(e => {
+    console.log(e, "func1");
+});
+}
+function addDownloadAnimation(){
+  let templateDownloadBox = document.getElementById("pauseDownload");
+  let wrap = document.querySelector(".wrapper");
+  wrap.appendChild(templateDownloadBox.content.cloneNode(true));
+
+  document.querySelector(".basket-wrapper").removeEventListener("click", closeBasket );
+}
+function deleteDownloadAnimation(){
+  let downloadBox = document.querySelector(".pauseDownload-box");
+  let wrap = document.querySelector(".wrapper");
+  wrap.removeChild(downloadBox);
+  document.querySelector(".basket-wrapper").addEventListener("click", closeBasket );
 }
 
 
-function clickOnBasket(){
-  let basket = this;
-  drawbasket()
-  .then(function(basketStep0){
+function functionForButton2Back(){
+  let promise2back = new Promise(  function(resolve, reject) {
 
-    let wrapDrawElementsForBasket = drawElementsForBasket.bind(basket);
-    wrapDrawElementsForBasket();
+      let changeStep = addActiveStep.bind(circlesStep[0]);
+      changeStep();
 
-    let button = basketStep0.querySelector(".button-step1");
-    addEventForButtons(circlesStep[1], button, basketStep0);
+      let draw = drawSteps.bind(circlesStep[0]);
+      draw();
+      addElementsForStep1(basketFromFunc);
+      let step1template = document.querySelector(".step1-application");
+      if(step1template){
+        resolve(".button-step1");
+      }
+      else{
+        reject(console.log(" button2back failed =(( "))
+      }
 
-    return button;
+  });
 
+  promise2back.then(function(buttonClass){
+
+    let button = document.querySelector(buttonClass);
+    button.addEventListener("click", functionForButton1);
+
+  }).catch(e => {
+    console.log(e,"func2back");
+});
+}
+
+
+
+function functionForButton2(){
+  let promise2 = new Promise(  function(resolve, reject) {
+
+    addDownloadAnimation();
+    getInfoCards();
+
+    setTimeout(function(){
+
+      let changeStep = addActiveStep.bind(circlesStep[2]);
+      changeStep();
+
+      let draw = drawSteps.bind(circlesStep[2]);
+      draw();
+      setContactInfo()
+      document.querySelector(".toggle").onclick = clickToggle;
+      let step3template = document.querySelector(".step-3__contact-info-wrapper");
+      if(step3template){
+        resolve(".button-step3");
+      }
+      else{
+        reject(console.log(" button2 failed =(( "))
+      }
+    }, Math.random()*2000)
+
+  });
+
+  promise2.then(function(buttonClass){
+
+    let button = document.querySelector(buttonClass);
+    button.addEventListener("click", functionForButton3);
+
+    deleteDownloadAnimation();
+
+  }).catch(e => {
+    console.log(e,"func2");
+});
+}
+
+function functionForButton3(){
+  let promise3 = new Promise(  function(resolve, reject) {
+    addDownloadAnimation();
+    getContactInfo();
+
+    setTimeout(function(){
+
+      console.log(checkCardsInfo, checkContactInfo);
+      if(checkData()){
+        console.log(localStorage.getItem("cardNumber"), "check");
+        let changeStep = addActiveStep.bind(circlesStep[3]);
+        changeStep();
+
+        let draw = drawSteps.bind(circlesStep[3]);
+        draw();
+        let step3template = document.querySelector(".step-4__success-wrapper");
+        resolve(".button-step4");
+      }
+      else{
+        reject(console.log(" data is not full =("))
+      }
+    }, Math.random()*3000)
+
+  });
+
+  promise3.then(function(buttonClass){
+    circlesStep[0].removeEventListener("click", functionForButton2Back);
+    circlesStep[1].removeEventListener("click", functionForButton1);
+    circlesStep[2].removeEventListener("click", functionForButton2);
+    let button = document.querySelector(buttonClass);
+    button.addEventListener("click", functionForButton4);
+    deleteDownloadAnimation();
+      document.querySelector(".basket-wrapper").removeEventListener("click", closeBasket );
+  }, function(){
+    alert("Не введены все данные!!!");
+    deleteDownloadAnimation();
   })
-  .then(function(button){
+}
 
-    let elemRemove = document.querySelector(".step-2__cards");
-    addEventForButtons(circlesStep[2], button, elemRemove);
+function functionForButton4(){
+  //СОХРАНИТЬ в JSON и ОТПРАВИТЬ
 
-    return button;
+  closeBasket();
+}
 
-  })
+
+
+function getInfoCards(){
+  try{
+    localStorage.setItem("cardNumber", document.querySelector(".input-number-card").value);
+    localStorage.setItem("month", document.querySelector(".input-year-month_left").value);
+    localStorage.setItem("year", document.querySelector(".input-year-month_right").value);
+    localStorage.setItem("cardHolder", document.getElementById("card-holder").value);
+  }
+  catch(e){
+    console.log(e);
+    checkCardsInfo=false;
+  }
+}
+let checkCardsInfo = true;
+let checkContactInfo = true;
+function getContactInfo(){
+  try{
+      localStorage.setItem("surname", document.getElementById("surname").value);
+      localStorage.setItem("name", document.getElementById("name").value);
+      localStorage.setItem("telephone", document.getElementById("telephone").value);
+      localStorage.setItem("email", document.getElementById("email").value);
+      localStorage.setItem("organization", document.getElementById("organization").value);
+      localStorage.setItem("INN", document.getElementById("INN").value);
+      localStorage.setItem("city", document.getElementById("city").value);
+
+      localStorage.setItem("consult", document.querySelector(".toggle").dataset.check);
+      localStorage.setItem("quick-install", document.getElementById("quick-install").checked);
+      localStorage.setItem("def-install", document.getElementById("def-install").checked);
+
+    }
+    catch(e){
+      console.log(e);
+      checkContactInfo = false;
+    }
+
+}
+function checkData(){
+  if(
+    (localStorage.getItem("cardNumber")!=null)&&
+    (localStorage.getItem("month")!=null)&&
+    (localStorage.getItem("year")!=null)&&
+    (localStorage.getItem("cardHolder")!=null)&&
+    (localStorage.getItem("surname")!=null)&&
+    (localStorage.getItem("name")!=null)&&
+    (localStorage.getItem("telephone")!=null)&&
+    (localStorage.getItem("email")!=null)&&
+    (localStorage.getItem("organization")!=null)&&
+    (localStorage.getItem("INN")!=null)&&
+    (localStorage.getItem("surname")!=null)&&(
+    (localStorage.getItem("quick-install")!=null)||
+    (localStorage.getItem("cdef-install")!=null))
+  )
+    return true;
+  else {
+    return false;
+  }
+}
+function setInfoCards(){
+  document.querySelector(".input-number-card").value = localStorage.getItem("cardNumber");
+  document.querySelector(".input-year-month_left").value = localStorage.getItem("month");
+  document.querySelector(".input-year-month_right").value = localStorage.getItem("year");
+  document.getElementById("card-holder").value = localStorage.getItem("cardHolder");
+}
+
+function setContactInfo(){
+  document.getElementById("surname").value = localStorage.getItem("surname");
+  document.getElementById("name").value = localStorage.getItem("name");
+  document.getElementById("telephone").value = localStorage.getItem("telephone");
+  document.getElementById("email").value = localStorage.getItem("email");
+  document.getElementById("organization").value = localStorage.getItem("organization");
+  document.getElementById("INN").value = localStorage.getItem("INN");
+  document.getElementById("city").value = localStorage.getItem("surname");
+
+  let toggle = document.querySelector(".toggle")
+  if(localStorage.getItem("consult")=="false"){
+    toggle.classList.add("toggle__off");
+    toggle.classList.remove("toggle__on");
+  }else if(localStorage.getItem("consult")=="true"){
+    toggle.classList.add("toggle__on");
+    toggle.classList.remove("toggle__off");
+  }
+
+  document.getElementById("quick-install").checked = !!localStorage.getItem("quick-install");
+  document.getElementById("def-install").checked = !!localStorage.getItem("def-install");
+
 
 }
 

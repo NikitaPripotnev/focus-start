@@ -45,7 +45,7 @@ function addElements(list, i){
 //
 
 //точки для карусели
-function carouselAddElements(){
+function carouselAddElements(listApplication){
     let wrapper = document.createElement("div");
     wrapper.className = "carousel";
 
@@ -73,7 +73,7 @@ function renderCarousel(listApplication){
     carousel.appendChild(addElements(listApplication, i));
   }
   carousel.appendChild(addElements(listApplication, 0));
-  document.querySelector(".content__top").appendChild(carouselAddElements());
+  document.querySelector(".content__top").appendChild(carouselAddElements(listApplication));
 }
 
 

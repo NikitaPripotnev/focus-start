@@ -9,7 +9,7 @@
 <body>
 	<div class="wrapper">
 		<header class="header clearfix">
-			<div class="logo"></div>
+			<a href="index.html"><div class="logo"></div></a>
 			<nav class="nav">
 				<ul class="nav__menu">
 					<li class="nav__menu__item"><a class="nav__menu__item__link link_active" href="index.html">Главная</a></li>
@@ -20,7 +20,7 @@
 			<div class="header__basket">
 				<div class="header__basket-without-close">
 					<svg class ="header__basket__svg header__basket__svg-basket"><use xlink:href="#cft-basket"></use></svg>
-					<span class="header__basket__price"></span><span class="header__basket__dollar">$</span>
+					<span class="header__basket__price"></span><span class="header__basket__dollar">$,</span><span class="header__basket__count"></span>
 				</div>
 				<svg class ="header__basket__svg header__basket__svg-close display-none"><use xlink:href="#cft-close"></use></svg>
 			</div>
@@ -307,6 +307,27 @@
 
 	</template>
 
+	<template id="pauseDownload">
+
+		<div class="pauseDownload-box">
+
+			<div class="tmp-block"></div>
+			<div class="pauseDownload-box__animation">
+				<div id="floatingCirclesG">
+					<div class="f_circleG" id="frotateG_01"></div>
+					<div class="f_circleG" id="frotateG_02"></div>
+					<div class="f_circleG" id="frotateG_03"></div>
+					<div class="f_circleG" id="frotateG_04"></div>
+					<div class="f_circleG" id="frotateG_05"></div>
+					<div class="f_circleG" id="frotateG_06"></div>
+					<div class="f_circleG" id="frotateG_07"></div>
+					<div class="f_circleG" id="frotateG_08"></div>
+				</div>
+			</div>
+
+		</div>
+
+	</template>
 
 	<div class="basket-wrapper display-none"></div>
 
@@ -338,12 +359,16 @@
 		</symbol>
 	</svg>
 
-	<script src="js/application-download.js" type="module">
-	</script>
-	<script src="js/carousel.js" type="module">
-	</script>
-	<script src="js/script.js" type="module">
-	</script>
+	<script src="js/application-download.js" type="module"></script>
+	<script src="js/basket.js" type="module"></script>
+	<script src="js/basket-functions.js" type="module"></script>
+	<script src="js/basket-draw-other.js" type="module"></script>
+	<script src="js/basket-draw.js" type="module"></script>
+	<script src="js/application-download.js" type="module"></script>
+	<script src="js/carousel.js" type="module"></script>
+	<script src="js/main-page.js" type="module"></script>
+
+
 
 
 </body>

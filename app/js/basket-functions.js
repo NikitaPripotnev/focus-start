@@ -1,15 +1,15 @@
 import {Basket} from "./basket.js";
-import {drawBasket, drawElementsForBasket} from "./basket-draw.js";
-import {drawBasket, drawElementsForBasket} from "./basket-draw-other.js";
+import {drawBasket} from "./basket-draw.js";
 
 
 let basketPrice = document.querySelector(".header__basket__price");
+let basketCount = document.querySelector(".header__basket__count");
 let basketClose = document.querySelector(".header__basket__svg-close");
 
-
+export let basket;
 export function createBasket(){
 
-  let basket = new Basket(0, 0);
+  basket = new Basket(0, 0);
   if(localStorage.getItem("basket") !== null){
 
       basket.price = parseInt(localStorage.getItem("price"));
@@ -37,12 +37,14 @@ function basketFocus(){
   document.querySelector(".header__basket__svg-basket").style.stroke = colorRed;
   document.querySelector(".header__basket__price").style.color = colorRed;
   document.querySelector(".header__basket__dollar").style.color = colorRed;
+  document.querySelector(".header__basket__count").style.color = colorRed;
 }
 function basketUnFocus(){
   let colorLightGrey = "#adafb2";
   document.querySelector(".header__basket__svg-basket").style.stroke = colorLightGrey;
   document.querySelector(".header__basket__price").style.color = colorLightGrey;
   document.querySelector(".header__basket__dollar").style.color = colorLightGrey;
+  document.querySelector(".header__basket__count").style.color = colorLightGrey;
 }
 
 function clearBasket(){
@@ -57,7 +59,7 @@ export function initialSmallBasket(basket){
   basketWithoutClose.onmouseover = basketFocus;
   basketWithoutClose.onmouseout = basketUnFocus;
 
-  let funcClickBasket = drawBasket.bind(basket);
+  let funcClickBasket = drawBasket.bind(this, basket);
   basketWithoutClose.onclick = funcClickBasket;
 
   let funcClickClose = clearBasket.bind(basket);
@@ -67,7 +69,7 @@ export function initialSmallBasket(basket){
 
 export function showDataSmallBasket(basket){
   basketPrice.innerText=basket.price;
-  //basketCount.innerText=basket.count;
+  basketCount.innerText=basket.count;
   if(basket.price!=0&&basketClose.classList.contains("display-none")){
     basketClose.classList.remove("display-none");
   }
